@@ -1,0 +1,31 @@
+:root {
+    --fg: #D3C6AA;
+    --bg-0: #2D353B;
+    --bg-1: #343F44;
+    --bg-2: #3D484D;
+    --blue: #7FBBB3;
+    --aqua: #83C092;
+}
+
+html,
+body {
+    background-color: var(--bg-0);
+    color: var(--fg);
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Code', sans-serif;
+}
+
+.pattern {
+    --s: 158px;
+    /* control the size*/
+    --c1: var(--bg-0);
+    --c2: var(--bg-1);
+
+    --_g: var(--s) var(--s) radial-gradient(var(--c1) 17%, var(--c2) 18% 35%, #0000 36.5%);
+    background:
+        calc(var(--s)/-4) calc(var(--s)/-4)/var(--_g),
+        calc(var(--s)/ 4) calc(var(--s)/ 4)/var(--_g),
+        radial-gradient(var(--c2) 34%, var(--c1) 36% 68%, #0000 70%) 0 0/calc(var(--s)/2) calc(var(--s)/2),
+        repeating-linear-gradient(45deg, var(--c1) -12.5% 12.5%, var(--c2) 0 37.5%) 0 0/var(--s) var(--s);
+}
