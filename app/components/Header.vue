@@ -23,14 +23,16 @@ const socials: Social[] = [
 <template>
     <header>
         <nav>
-            <h2 id="name">
+            <p id="name">
                 talwat
-            </h2>
+            </p>
             <div id="pages">
                 <NuxtLink v-for="page in pages" :to="page.link">{{ page.name }}</NuxtLink>
             </div>
             <div id="socials">
-                <a class="icon" v-for="social in socials" :href="social.link"><Icon name="uil:github" size="2rem"/></a>
+                <a class="icon" v-for="social in socials" :href="social.link">
+                    <Icon name="uil:github" size="2rem" />
+                </a>
             </div>
         </nav>
     </header>
@@ -40,6 +42,8 @@ const socials: Social[] = [
 header {
     position: sticky;
     padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 nav {
@@ -49,7 +53,9 @@ nav {
     align-items: center;
 }
 
-nav > * {
+nav>* {
+    flex-grow: 1;
+    flex-basis: 0;
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -63,5 +69,19 @@ nav * {
 
 .icon {
     display: contents;
+}
+
+#name {
+    color: var(--blue);
+    font-size: 1.5rem;
+    justify-content: start;
+}
+
+#pages {
+    justify-content: center;
+}
+
+#socials {
+    justify-content: end;
 }
 </style>

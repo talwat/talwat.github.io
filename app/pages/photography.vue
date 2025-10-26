@@ -1,0 +1,3 @@
+<template>
+    <main><h1>Work in progress!</h1></main>
+</template>
