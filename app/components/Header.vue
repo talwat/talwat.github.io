@@ -41,9 +41,13 @@ const socials: Social[] = [
 <style lang="css" scoped>
 header {
     position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--bg-0);
     padding: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 nav {
