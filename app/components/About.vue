@@ -76,11 +76,11 @@ const categories: Category[] = [
 #container {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 #container>* {
-    flex-grow: 1;
-    flex-basis: 0;
+    flex: 1 1 248px;
     border: 2px solid var(--bg-1);
     border-radius: 1rem;
     padding: 1.2rem;
@@ -90,8 +90,9 @@ h1 {
     margin-top: 0;
 }
 
-#technologies>div {
+.technology-category {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.5rem;

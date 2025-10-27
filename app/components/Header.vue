@@ -19,6 +19,12 @@ interface Social {
 const socials: Social[] = [
     { icon: "util:github", color: "#000000", link: "https://github.com/talwat" }
 ]
+
+let menu = ref(false);
+
+onMounted(() => {
+    window.onresize = () => menu.value = false;
+})
 </script>
 <template>
     <header>
@@ -29,17 +35,31 @@ const socials: Social[] = [
             <div id="pages">
                 <NuxtLink v-for="page in pages" :to="page.link">{{ page.name }}</NuxtLink>
             </div>
+            <button id="menu-btn" @click="menu = !menu">
+                <Icon name="mdi:hamburger-menu" size="2rem" />
+            </button>
             <div id="socials">
                 <a class="icon" v-for="social in socials" :href="social.link">
                     <Icon name="uil:github" size="2rem" />
                 </a>
             </div>
         </nav>
+
+        <Transition name="slide">
+            <div id="menu" v-show="menu">
+                <NuxtLink v-for="page in pages" :to="page.link">{{ page.name }}</NuxtLink>
+            </div>
+        </Transition>
     </header>
 </template>
 
 <style lang="css" scoped>
-header {
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
     position: sticky;
     top: 0;
     z-index: 50;
@@ -48,13 +68,6 @@ header {
     padding-left: 2rem;
     padding-right: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 }
 
 nav>* {
@@ -71,6 +84,11 @@ nav * {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: var(--fg);
+}
+
 .icon {
     display: contents;
 }
@@ -84,6 +102,57 @@ nav * {
 
 #pages {
     justify-content: center;
+}
+
+#menu-btn {
+    display: none;
+}
+
+#menu {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 64px;
+    left: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    flex-direction: column;
+    background-color: var(--bg-0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#menu > * {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    transform: translateY(-100%);
+}
+
+@media only screen and (max-width: 600px) {
+    #pages {
+        display: none;
+    }
+
+    #menu-btn {
+        display: contents;
+        cursor: pointer;
+    }
+
+    /* nav * {
+        flex-grow: initial;
+        flex-basis: initial;
+    } */
 }
 
 #socials {
