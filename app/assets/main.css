@@ -38,8 +38,7 @@ a:hover {
 }
 
 .pattern {
-    --s: 158px;
-    /* control the size*/
+    --s: 160px;
     --c1: var(--bg-0);
     --c2: var(--bg-1);
 
@@ -49,4 +48,23 @@ a:hover {
         calc(var(--s)/ 4) calc(var(--s)/ 4)/var(--_g),
         radial-gradient(var(--c2) 34%, var(--c1) 36% 68%, #0000 70%) 0 0/calc(var(--s)/2) calc(var(--s)/2),
         repeating-linear-gradient(45deg, var(--c1) -12.5% 12.5%, var(--c2) 0 37.5%) 0 0/var(--s) var(--s);
+
+    animation: scroll 8s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        background-position:
+            calc(var(--s)/-4) calc(var(--s)/-4),
+            calc(var(--s)/ 4) calc(var(--s)/ 4),
+            0 0,
+            0 0;
+    }
+    100% {
+        background-position:
+            calc(var(--s)/-4 + var(--s)) calc(var(--s)/-4 + var(--s)),
+            calc(var(--s)/ 4 + var(--s)) calc(var(--s)/ 4 + var(--s)),
+            var(--s) var(--s),
+            var(--s) var(--s);
+    }
 }

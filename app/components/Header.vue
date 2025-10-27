@@ -76,6 +76,7 @@ nav * {
 }
 
 #name {
+    user-select: none;
     color: var(--blue);
     font-size: 1.5rem;
     justify-content: start;
