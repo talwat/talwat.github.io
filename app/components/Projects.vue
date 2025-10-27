@@ -58,7 +58,7 @@ const projects: Project[] = [
         repo: "pap"
     },
     {
-        image: "https://preview.redd.it/pokeget-pokemon-in-your-terminal-rust-flavoured-v0-q94vdvbcguib1.png?width=1080&crop=smart&auto=webp&s=bc1a132ce1c5c7c932482be336dc95a1fe054567",
+        image: "/images/pokeget.png",
         name: "pokeget-rs",
         language: "Rust",
         description: "Simple utility to display pokemon sprites in the terminal.",
