@@ -47,7 +47,7 @@ onMounted(() => {
 
         <Transition name="slide">
             <div id="menu" v-show="menu">
-                <NuxtLink v-for="page in pages" :to="page.link">{{ page.name }}</NuxtLink>
+                <NuxtLink v-for="page in pages" :to="page.link" @click="menu = false">{{ page.name }}</NuxtLink>
             </div>
         </Transition>
     </header>
