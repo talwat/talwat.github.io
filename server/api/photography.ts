@@ -16,6 +16,7 @@ export default defineEventHandler(async () => {
   const grouped = new Map<string, Collection>();
   for (const file of directory) {
     if (!file.isFile()) continue;
+    if (file.name == ".DS_Store") continue;
     const parent = file.parentPath.split("/").at(-1)!;
 
     if (!grouped.has(parent))

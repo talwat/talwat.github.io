@@ -8,11 +8,20 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
 
 <template>
     <main>
-        <section v-for="collection in collections">
+        <section>
+            <h1>Photography</h1>
+            <p>
+                Here is a collection of photos I've taken with a NIKON D5500.
+                For now, they're pictures of nature, but that may change in the future.
+            </p>
+        </section>
+        <section class="collection" v-for="collection in collections">
             <h1>{{ collection.name }}</h1>
-            <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
+            <Splide :options="{ rewind: true, lazyLoad: 'nearby', preloadPages: 2 }" aria-label="My Favorite Images">
                 <SplideSlide v-for="file in collection.files">
-                    <img :src="`/images/photography/${collection.name}/${file}`" />
+                    <img
+                        :data-splide-lazy="`/images/photography/${collection.name}/${file}`"
+                    />
                 </SplideSlide>
             </Splide>
         </section>
@@ -20,7 +29,16 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
 </template>
 
 <style scoped>
+p {
+    margin: 0;
+}
+
 h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.collection h1 {
     text-align: center;
     margin: 0;
     margin-bottom: 1rem;
@@ -39,7 +57,7 @@ img {
     object-fit: contain;
 }
 
-section {
+.collection {
     border: 2px solid var(--bg-1);
     padding: 1rem;
     border-radius: 1rem;

@@ -1,3 +1,6 @@
+<script lang="ts" setup>
+    import "@/assets/pattern.css"
+</script>
 <template>
     <section class="pattern">
         <div id="name">
