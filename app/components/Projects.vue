@@ -51,6 +51,13 @@ const projects: Project[] = [
         repo: "coffee-tracker"
     },
     {
+        image: "/images/pokesave.png",
+        name: "pokesave",
+        language: "Rust",
+        description: "Read raw binary save files from the original Pokemon red & blue.",
+        repo: "pokesave"
+    },
+    {
         image: "/images/pap.png",
         name: "pap",
         language: "Go",
@@ -61,7 +68,7 @@ const projects: Project[] = [
         image: "/images/pokeget.png",
         name: "pokeget-rs",
         language: "Rust",
-        description: "Simple utility to display pokemon sprites in the terminal.",
+        description: "Displays pokemon sprites in the terminal.",
         repo: "pokeget-rs"
     },
 ];
