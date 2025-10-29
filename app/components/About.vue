@@ -88,6 +88,12 @@ const categories: Category[] = [
 
 h1 {
     margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .technology-category {

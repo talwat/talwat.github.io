@@ -54,15 +54,19 @@ onMounted(() => {
 </template>
 
 <style lang="css" scoped>
+header {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+}
+
 nav {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    z-index: 8;
     background-color: var(--bg-0);
     padding: 1rem;
     padding-left: 2rem;
