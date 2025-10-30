@@ -15,16 +15,18 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
                 For now, they're pictures of nature, but that may change in the future.
             </p>
         </section>
-        <section class="collection" v-for="collection in collections">
-            <h1>{{ collection.name }}</h1>
-            <Splide :options="{ rewind: true, lazyLoad: 'nearby', preloadPages: 2 }" aria-label="My Favorite Images">
-                <SplideSlide v-for="file in collection.files">
-                    <img
-                        :data-splide-lazy="`/images/photography/${collection.name}/${file}`"
-                    />
-                </SplideSlide>
-            </Splide>
-        </section>
+        <div id="collections">
+            <section class="collection" v-for="collection in collections">
+                <h1>{{ collection.name }}</h1>
+                <Splide
+                    :options="{ rewind: true, lazyLoad: 'nearby', preloadPages: 2, arrows: collection.files.length > 1 }"
+                    aria-label="My Favorite Images">
+                    <SplideSlide v-for="file in collection.files">
+                        <img :data-splide-lazy="`/images/photography/${collection.name}/${file}`" />
+                    </SplideSlide>
+                </Splide>
+            </section>
+        </div>
     </main>
 </template>
 
@@ -53,13 +55,30 @@ main {
 img {
     width: 100%;
     height: 100%;
-    max-height: 70vh;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .collection {
     border: 2px solid var(--bg-1);
     padding: 1rem;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.collection>div {
+    flex-grow: 1;
+}
+
+#collections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+@media (max-width: 800px) {
+    #collections {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
