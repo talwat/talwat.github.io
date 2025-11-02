@@ -154,11 +154,6 @@ a {
         display: contents;
         cursor: pointer;
     }
-
-    /* nav * {
-        flex-grow: initial;
-        flex-basis: initial;
-    } */
 }
 
 #socials {

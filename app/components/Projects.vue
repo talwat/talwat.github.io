@@ -4,7 +4,8 @@ interface Project {
     name: string,
     language: string,
     description: string,
-    repo: string
+    repo: string,
+    link?: string,
 }
 
 const projects: Project[] = [
@@ -48,7 +49,8 @@ const projects: Project[] = [
         name: "Coffee Tracker",
         language: "Svelte",
         description: "A web app to track coffee consumption, with animated visuals and persistent storage.",
-        repo: "coffee-tracker"
+        repo: "coffee-tracker",
+        link: "https://talwat.com/coffee-tracker/",
     },
     {
         image: "/images/pokesave.png",
@@ -78,7 +80,8 @@ const projects: Project[] = [
     <section>
         <h1>Projects</h1>
         <div id="projects">
-            <a class="project" v-for="project in projects" :href="`https://github.com/talwat/${project.repo}`">
+            <a class="project" v-for="project in projects"
+                :href="project.link ? project.link : `https://github.com/talwat/${project.repo}`" target="_blank">
                 <div class="project-top">
                     <h2>{{ project.name }}</h2>
                     <p>{{ project.language }}</p>
@@ -123,7 +126,6 @@ h1 {
 .project:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px var(--blue);
-    /* TODO */
 }
 
 .project-top {
@@ -138,7 +140,6 @@ p {
 
 img {
     display: block;
-    /* border: 1px solid var(--bg-1); */
     margin: 1em;
     max-height: 14em;
     max-width: calc(100% - 2em);

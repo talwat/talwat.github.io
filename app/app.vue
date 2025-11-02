@@ -2,8 +2,8 @@
   useSeoMeta({
     title: "talwat's personal website",
     ogTitle: "talwat's personal website",
-    description: 'A developer portfolio, including several different projects as well as contact information and an about me.',
-    ogDescription: 'A developer portfolio, including several different projects as well as contact information and an about me.',
+    description: 'Developer portfolio, including several different projects as well as contact information and an about me.',
+    ogDescription: 'Developer portfolio, including several different projects as well as contact information and an about me.',
   })
 
   useHead({
