@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     defaults: {
       weights: [400],
       styles: ['normal', 'italic'],
+      preload: true,
     },
   }
 })
