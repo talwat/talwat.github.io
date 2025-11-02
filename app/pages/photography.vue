@@ -80,5 +80,11 @@ img {
     #collections {
         grid-template-columns: 1fr;
     }
+
+    .collection {
+        border: 0;
+        padding: 0;
+        margin-top: 1rem;
+    }
 }
 </style>

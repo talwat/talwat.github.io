@@ -5,11 +5,15 @@
     description: 'A developer portfolio, including several different projects as well as contact information and an about me.',
     ogDescription: 'A developer portfolio, including several different projects as well as contact information and an about me.',
   })
+
+  useHead({
+    meta: [
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover"}
+    ]
+  })
 </script>
 
 <template>
-  <div>
-    <Header />
-    <NuxtPage />
-  </div>
+  <Header />
+  <NuxtPage />
 </template>

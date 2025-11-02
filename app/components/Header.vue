@@ -23,7 +23,9 @@ const socials: Social[] = [
 let menu = ref(false);
 
 onMounted(() => {
-    window.onresize = () => menu.value = false;
+    let callback = () => menu.value = false;
+    window.onresize = callback;
+    window.onscroll = callback;
 })
 </script>
 <template>
