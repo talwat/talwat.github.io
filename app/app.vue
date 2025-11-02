@@ -8,8 +8,11 @@
 
   useHead({
     meta: [
-      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover"}
-    ]
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover"},
+    ],
+    htmlAttrs: {
+      lang: "en"
+    }
   })
 </script>
 

@@ -60,7 +60,7 @@ const categories: Category[] = [
                 <h2>{{ category.name }}</h2>
                 <ul>
                     <li v-for="technology in category.technologies">
-                        <a :href="technology.link">
+                        <a :href="technology.link" :aria-label="technology.icon.split(':')[1]">
                             <Icon :name="technology.icon" size="2rem" :style="{
                                 color: `var(--${technology.color})`,
                             }" />
@@ -120,5 +120,9 @@ ul {
 li {
     display: contents;
     width: 32px;
+}
+
+a:hover {
+    font-style: italic;
 }
 </style>

@@ -41,7 +41,7 @@ onMounted(() => {
                 <Icon name="mdi:hamburger-menu" size="2rem" />
             </button>
             <div id="socials">
-                <a class="icon" v-for="social in socials" :href="social.link">
+                <a class="icon" v-for="social in socials" :href="social.link" aria-label="github link">
                     <Icon name="uil:github" size="2rem" />
                 </a>
             </div>

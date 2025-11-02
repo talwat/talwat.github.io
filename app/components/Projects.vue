@@ -87,7 +87,7 @@ const projects: Project[] = [
                     <p>{{ project.language }}</p>
                 </div>
 
-                <img :src="project.image" />
+                <img :alt="`image of ${project.name} by talwat`" :src="project.image" />
                 <p>{{ project.description }}</p>
             </a>
         </div>

@@ -20,9 +20,10 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
                 <h1>{{ collection.name }}</h1>
                 <Splide
                     :options="{ rewind: true, lazyLoad: 'nearby', preloadPages: 2, arrows: collection.files.length > 1 }"
-                    aria-label="My Favorite Images">
-                    <SplideSlide v-for="file in collection.files">
-                        <img :data-splide-lazy="`/images/photography/${collection.name}/${file}`" />
+                    :aria-label="`image carousel for ${collection.name}`">
+                    <SplideSlide v-for="(file, i) in collection.files">
+                        <img :alt="`image ${i} of ${collection.name}`"
+                            :data-splide-lazy="`/images/photography/${collection.name}/${file}`" />
                     </SplideSlide>
                 </Splide>
             </section>
