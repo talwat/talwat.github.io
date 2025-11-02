@@ -89,3 +89,9 @@ img {
     }
 }
 </style>
+
+<style lang="css">
+.splide__track {
+    aspect-ratio: 3 / 2;
+}
+</style>
