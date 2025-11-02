@@ -94,4 +94,8 @@ img {
 .splide__track {
     aspect-ratio: 3 / 2;
 }
+
+.splide__list {
+    list-style-type: none;
+}
 </style>
