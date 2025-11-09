@@ -57,7 +57,10 @@ const categories: Category[] = [
         <section id="technologies">
             <h1>Technologies I Use</h1>
             <div class="technology-category" v-for="category in categories">
-                <h2>{{ category.name }}</h2>
+                <div class="technology-name">
+                    <Icon class="arrow-icon" name="weui:arrow-filled" size="2rem"></Icon>
+                    <h2>{{ category.name }}</h2>
+                </div>
                 <ul>
                     <li v-for="technology in category.technologies">
                         <a :href="technology.link" :aria-label="technology.icon.split(':')[1]">
@@ -96,17 +99,36 @@ p {
     margin-bottom: 0.5rem;
 }
 
+#technologies {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.arrow-icon {
+    margin-bottom: 2px;
+}
+
 .technology-category {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
+    gap: 1rem;
+    border-bottom: solid var(--bg-2) 1px;
+    padding-bottom: 0.4rem;
+}
+
+.technology-name {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
 }
 
 h2 {
     margin: 0;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
+    font-style: italic;
     font-weight: normal;
 }
 
@@ -117,7 +139,8 @@ ul {
     gap: 0.4em;
 }
 
-li {
+li,
+li>a {
     display: contents;
     width: 32px;
 }
