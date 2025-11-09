@@ -45,6 +45,13 @@ const projects: Project[] = [
         repo: "transiteer"
     },
     {
+        image: "/images/indiepkg.jpg",
+        name: "indiepkg",
+        language: "Go",
+        description: "CLI package manager, complete with a custom JSON format.",
+        repo: "indiepkg"
+    },
+    {
         image: "/images/coffee-tracker.png",
         name: "Coffee Tracker",
         language: "Svelte",
