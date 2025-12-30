@@ -17,7 +17,7 @@ const projects: Project[] = [
         repo: "geoterm"
     },
     {
-        image: "https://github.com/talwat/lowfi/raw/main/media/example1.png",
+        image: "https://github.com/talwat/lowfi/raw/main/docs/media/example1.png",
         name: "lowfi",
         language: "Rust",
         description: "An extremely simple TUI lofi player, with 800+ github stars and 25k+ downloads.",
