@@ -7,7 +7,7 @@ interface Page {
 const pages: Page[] = [
     { name: "Home", link: "/" },
     { name: "Projects", link: "/#projects" },
-    { name: "Photography", link: "/photography" }
+    { name: "Photography", link: "/photography/" }
 ];
 
 interface Social {

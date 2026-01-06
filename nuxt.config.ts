@@ -17,7 +17,8 @@ export default defineNuxtConfig({
   },
   site: {
     url: "talwat.com",
-    name: "talwat's website"
+    name: "talwat's website",
+    trailingSlash: true 
   },
   sitemap: {
     xsl: false,
