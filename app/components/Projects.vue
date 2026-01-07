@@ -24,35 +24,35 @@ const projects: Project[] = [
         repo: "lowfi"
     },
     {
-        image: "/images/earthsmp.png",
+        image: "/images/projects/earthsmp.png",
         name: "earthsmp",
         language: "Java, Vue",
         description: "Minecraft plugin implementing land borders, with a web UI for configuration.",
         repo: "earthsmp"
     },
     {
-        image: "/images/battleship.png",
+        image: "/images/projects/battleship.png",
         name: "battleship",
         language: "C",
         description: "A simple implementation of battleship in C with basic TCP multiplayer.",
         repo: "battleship"
     },
     {
-        image: "/images/transiteer.png",
+        image: "/images/projects/transiteer.png",
         name: "transiteer",
         language: "Vue",
         description: "Web app for making transit diagrams easily and quickly.",
         repo: "transiteer"
     },
     {
-        image: "/images/indiepkg.jpg",
+        image: "/images/projects/indiepkg.jpg",
         name: "indiepkg",
         language: "Go",
         description: "CLI package manager, complete with a custom JSON format.",
         repo: "indiepkg"
     },
     {
-        image: "/images/coffee-tracker.png",
+        image: "/images/projects/coffee-tracker.png",
         name: "Coffee Tracker",
         language: "Svelte",
         description: "A web app to track coffee consumption, with animated visuals and persistent storage.",
@@ -60,21 +60,21 @@ const projects: Project[] = [
         link: "https://talwat.com/coffee-tracker/",
     },
     {
-        image: "/images/pokesave.png",
+        image: "/images/projects/pokesave.png",
         name: "pokesave",
         language: "Rust",
         description: "Read raw binary save files from the original Pokemon red & blue.",
         repo: "pokesave"
     },
     {
-        image: "/images/pap.png",
+        image: "/images/projects/pap.png",
         name: "pap",
         language: "Go",
         description: "A swiss army knife for managing and creating minecraft servers.",
         repo: "pap"
     },
     {
-        image: "/images/pokeget.png",
+        image: "/images/projects/pokeget.png",
         name: "pokeget-rs",
         language: "Rust",
         description: "Displays pokemon sprites in the terminal.",

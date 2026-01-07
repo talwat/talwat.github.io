@@ -23,7 +23,7 @@ const categories: Category[] = [
         ],
     },
     {
-        name: "Frontend Technologies",
+        name: "Frontend/Web",
         technologies: [
             { icon: "simple-icons:html5", link: "https://developer.mozilla.org/en-US/docs/Web/HTML", color: "orange" },
             { icon: "simple-icons:javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "yellow" },
@@ -33,7 +33,7 @@ const categories: Category[] = [
         ],
     },
     {
-        name: "Tools & Platforms",
+        name: "Miscellaneous",
         technologies: [
             { icon: "simple-icons:git", link: "https://git-scm.com", color: "red" },
             { icon: "codicon:terminal-linux", link: "https://www.kernel.org", color: "green" },
@@ -58,7 +58,7 @@ const categories: Category[] = [
             <h1>Technologies I Use</h1>
             <div class="technology-category" v-for="category in categories">
                 <div class="technology-name">
-                    <Icon class="arrow-icon" name="weui:arrow-filled" size="2rem"></Icon>
+                    <Icon class="arrow-icon" name="mdi:cards-diamond" size="1.5rem"></Icon>
                     <h2>{{ category.name }}</h2>
                 </div>
                 <ul>
@@ -105,18 +105,13 @@ p {
     gap: 0.5rem;
 }
 
-.arrow-icon {
-    margin-bottom: 2px;
-}
-
 .technology-category {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    display: grid;
     border-bottom: solid var(--bg-2) 1px;
-    padding-bottom: 0.4rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.05rem;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    row-gap: 0.4rem;
 }
 
 .technology-name {
@@ -136,6 +131,7 @@ ul {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: flex-start;
     gap: 0.4em;
 }
 
