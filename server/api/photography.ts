@@ -55,6 +55,6 @@ export default defineEventHandler(async () => {
     if (bi === -1) return -1;
     return ai - bi;
   });
-  
+
   return sorted;
 });
