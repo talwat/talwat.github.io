@@ -11,8 +11,8 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
         <section>
             <h1>Photography</h1>
             <p>
-                Here is a collection of photos I've taken with a NIKON D5500.
-                For now, they're pictures of nature, but that may change in the future.
+                Here is a collection of photos I've taken with either a Nikon D5500,
+                or a Fujifilm X-T3. I'm certainly a beginner, but I try my best.
             </p>
         </section>
         <div id="collections">
