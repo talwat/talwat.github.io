@@ -4,7 +4,7 @@ import { join } from "path";
 interface Collection {
   name: string,
   id: string,
-  createdAt: Date,
+  date: Date,
   files: string[],
 }
 
@@ -31,15 +31,15 @@ export default defineEventHandler(async () => {
     const parent = file.parentPath.split("/").at(-1)!;
 
     if (!collections.has(parent)) {
-      const stats = await fs.stat(file.parentPath);
-      collections.set(parent, { name: parent, id: toAscii(parent), createdAt: stats.birthtime, files: [] });
+      const stats = await fs.stat(`${file.parentPath}/${file.name}`);
+      collections.set(parent, { name: parent, id: toAscii(parent), date: stats.birthtime, files: [] });
     }
 
     const collection = collections.get(parent)!;
     collection.files.push(file.name);
   }
 
-  const sorted = Array.from(collections.values()).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  const sorted = Array.from(collections.values()).sort((a, b) => b.date.getTime() - a.date.getTime());
 
   return sorted;
 });
