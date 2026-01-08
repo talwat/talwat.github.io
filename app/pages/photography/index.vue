@@ -17,7 +17,7 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
         </section>
         <div id="collections">
             <section class="collection" v-for="collection in collections">
-                <h1>{{ collection.name }}</h1>
+                <h1><a :href="`/photography/${collection.id}`">{{ collection.name }}</a></h1>
                 <Splide
                     :options="{ rewind: true, lazyLoad: 'nearby', preloadPages: 2, arrows: collection.files.length > 1 }"
                     :aria-label="`image carousel for ${collection.name}`">
@@ -34,6 +34,11 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide';
 <style scoped>
 p {
     margin: 0;
+}
+
+a {
+    color: var(--fg);
+    text-decoration: none;
 }
 
 h1 {

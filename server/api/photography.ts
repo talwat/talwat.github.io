@@ -3,7 +3,18 @@ import { join } from "path";
 
 interface Collection {
   name: string,
+  id: string,
+  createdAt: Date,
   files: string[],
+}
+
+export function toAscii(input: string): string {
+  return input
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\x00-\x7F]/g, "")
+    .replace(" ", "-");
 }
 
 export default defineEventHandler(async () => {
@@ -13,17 +24,22 @@ export default defineEventHandler(async () => {
     withFileTypes: true,
   });
 
-  const grouped = new Map<string, Collection>();
+  const collections = new Map<string, Collection>();
   for (const file of directory) {
     if (!file.isFile()) continue;
     if (file.name == ".DS_Store") continue;
     const parent = file.parentPath.split("/").at(-1)!;
 
-    if (!grouped.has(parent))
-      grouped.set(parent, { name: parent, files: [] });
+    if (!collections.has(parent)) {
+      const stats = await fs.stat(file.parentPath);
+      collections.set(parent, { name: parent, id: toAscii(parent), createdAt: stats.birthtime, files: [] });
+    }
 
-    grouped.get(parent)!.files.push(file.name);
+    const collection = collections.get(parent)!;
+    collection.files.push(file.name);
   }
 
-  return Array.from(grouped.values());
+  const sorted = Array.from(collections.values()).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+  return sorted;
 });
