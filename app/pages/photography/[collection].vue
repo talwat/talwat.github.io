@@ -3,7 +3,7 @@ const collections = (await useFetch("/api/photography")).data.value!;
 const route = useRoute();
 const error = createError({
     status: 404,
-    statusText: 'Page Not Found',
+    message: `Collection not found: ${route.params.collection}`,
 });
 
 if (!route.params.collection) {
