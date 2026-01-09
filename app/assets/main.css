@@ -1,62 +1,63 @@
 :root {
-    --fg: #D3C6AA;
-    --fg-1: #859289;
-    --fg-2: #9DA9A0;
-    --bg-0: #2D353B;
-    --bg-1: #343F44;
-    --bg-2: #3D484D;
-    --red: #E67E80;
-    --orange: #E69875;
-    --yellow: #DBBC7F;
-    --green: #A7C080;
-    --blue: #7FBBB3;
-    --aqua: #83C092;
-    --purple: #D699B6;
-    --black: #232A2E;
+  --fg: #d3c6aa;
+  --fg-1: #859289;
+  --fg-2: #9da9a0;
+  --bg-0: #2d353b;
+  --bg-1: #343f44;
+  --bg-2: #3d484d;
+  --red: #e67e80;
+  --orange: #e69875;
+  --yellow: #dbbc7f;
+  --green: #a7c080;
+  --blue: #7fbbb3;
+  --aqua: #83c092;
+  --purple: #d699b6;
+  --black: #232a2e;
 }
 
 html,
 body {
-    background-color: var(--bg-0);
-    color: var(--fg);
-    margin: 0;
-    padding: 0;
-    font-family: 'Fira Code', sans-serif;
+  background-color: var(--bg-0);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: "Fira Code", sans-serif;
 }
 
 main {
-    margin: 1.5rem;
+  margin: 1.5rem;
 }
 
 a {
-    color: var(--blue);
-    text-decoration: underline;
+  color: var(--blue);
+  text-decoration: underline;
 }
 
-
 img:not([src]) {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .title-underlined {
-    text-align: center;
-    padding-bottom: 0.2rem;
-    border-bottom: 1px solid var(--bg-1);
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+  text-align: center;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--bg-1);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .hover-elevate {
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-    text-decoration: none;
-    color: var(--fg);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+  text-decoration: none;
+  color: var(--fg);
 
-    border: 2px solid var(--bg-1);
-    border-radius: 1rem;
-    padding: 1rem;
+  border: 2px solid var(--bg-1);
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .hover-elevate:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px var(--blue);
+  transform: translateY(-4px);
+  box-shadow: 0 4px var(--blue);
 }
