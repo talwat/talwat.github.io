@@ -45,7 +45,7 @@ const categories: Category[] = [
 <template>
     <div id="container">
         <section id="about">
-            <h1>About Me</h1>
+            <h2>About Me</h2>
             <p>
                 I'm currently a high school student who has been doing programming for around 4 years now.
                 I love computers, and more specifically, computer engineering. I am fascinated by the lower
@@ -55,11 +55,11 @@ const categories: Category[] = [
             </p>
         </section>
         <section id="technologies">
-            <h1>Technologies I Use</h1>
+            <h2>Technologies I Use</h2>
             <div class="technology-category" v-for="category in categories">
                 <div class="technology-name">
                     <Icon class="arrow-icon" name="mdi:cards-diamond" size="1.5rem"></Icon>
-                    <h2>{{ category.name }}</h2>
+                    <h3>{{ category.name }}</h3>
                 </div>
                 <ul>
                     <li v-for="technology in category.technologies">
@@ -89,9 +89,10 @@ const categories: Category[] = [
     padding: 1.2rem;
 }
 
-h1 {
+h2 {
     margin-top: 0;
     margin-bottom: 0.5rem;
+    font-size: 2rem;
 }
 
 p {
@@ -120,7 +121,7 @@ p {
     align-items: center;
 }
 
-h2 {
+h3 {
     margin: 0;
     font-size: 1.2rem;
     font-style: italic;
@@ -132,7 +133,7 @@ ul {
     padding: 0;
     display: flex;
     justify-content: flex-start;
-    gap: 0.4em;
+    gap: 0.4rem;
 }
 
 li,

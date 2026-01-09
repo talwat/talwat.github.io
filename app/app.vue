@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 useSeoMeta({
-  title: "talwat's personal website",
-  ogTitle: "talwat's personal website",
-  description: 'Developer portfolio, including several different projects as well as contact information and an about me.',
-  ogDescription: 'Developer portfolio, including several different projects as well as contact information and an about me.',
+  title: "talwat",
+  ogTitle: "talwat",
+  description: "Tal's developer portfolio.",
+  ogDescription: "Tal's developer portfolio.",
 })
 
 useHead({

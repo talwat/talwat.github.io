@@ -1,6 +1,13 @@
 <script setup lang="ts">
 const error = useError().value!;
 console.log(error)
+
+useSeoMeta({
+  title: `${error.statusCode} Error`,
+  ogTitle: `${error.statusCode} Error`,
+  description: `${error.message}`,
+  ogDescription: `${error.message}`,
+})
 </script>
 
 <template>

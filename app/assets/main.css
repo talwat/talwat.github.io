@@ -37,3 +37,26 @@ a {
 img:not([src]) {
     visibility: hidden;
 }
+
+.title-underlined {
+    text-align: center;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid var(--bg-1);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.hover-elevate {
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-decoration: none;
+    color: var(--fg);
+
+    border: 2px solid var(--bg-1);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.hover-elevate:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px var(--blue);
+}

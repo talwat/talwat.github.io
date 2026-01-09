@@ -34,6 +34,8 @@ p {
 }
 
 h1 {
+    padding: 0;
+    border: 0;
     margin-bottom: 0.8rem;
     font-size: 5rem;
     color: var(--blue);

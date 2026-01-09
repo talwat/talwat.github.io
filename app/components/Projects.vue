@@ -85,9 +85,9 @@ const projects: Project[] = [
 
 <template>
     <section>
-        <h1>Projects</h1>
+        <h1 class="title-underlined">Projects</h1>
         <div id="projects">
-            <a class="project" v-for="project in projects"
+            <a class="project hover-elevate" v-for="project in projects"
                 :href="project.link ? project.link : `https://github.com/talwat/${project.repo}`" target="_blank">
                 <div class="project-top">
                     <h2>{{ project.name }}</h2>
@@ -103,7 +103,8 @@ const projects: Project[] = [
 
 <style scoped>
 h1 {
-    text-align: center;
+    margin-top: 1.4rem;
+    margin-bottom: 1.1rem;
 }
 
 #projects {
@@ -118,21 +119,9 @@ h1 {
 }
 
 .project {
-    border: 2px solid var(--bg-1);
-    border-radius: 1rem;
-    padding: 1em;
-    color: var(--fg);
-    text-decoration: none;
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.project:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px var(--blue);
 }
 
 .project-top {
@@ -147,9 +136,9 @@ p {
 
 img {
     display: block;
-    margin: 1em;
-    max-height: 14em;
-    max-width: calc(100% - 2em);
+    margin: 1rem;
+    max-height: 14rem;
+    max-width: calc(100% - 2rem);
     object-fit: contain;
 }
 </style>

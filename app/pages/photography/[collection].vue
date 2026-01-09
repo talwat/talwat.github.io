@@ -15,10 +15,19 @@ const collection = collections.find(x => x.id == param);
 if (!collection) {
     throw error;
 }
+
+const title = `${collection.name.toLocaleLowerCase()} collection`
+const description = `A small collection of photos from ${collection.name}.`
+useSeoMeta({
+  title: title,
+  ogTitle: title,
+  description: description,
+  ogDescription: description,
+})
 </script>
 <template>
     <main>
-        <h1>{{ collection.name }}</h1>
+        <h1 class="title-underlined">{{ collection.name }}</h1>
         <div id="images">
             <img v-for="(file, i) in collection.files" :alt="`image ${i} of ${collection.name}`"
                 :src="`/images/photography/${collection.name}/${file}`" loading="lazy"></img>
@@ -27,14 +36,6 @@ if (!collection) {
 </template>
 
 <style lang="css" scoped>
-h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0.4rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--bg-1);
-}
-
 main {
     display: flex;
     flex-direction: column;
@@ -44,8 +45,7 @@ main {
 #images {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit,
-            minmax(min(600px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
 }
 
 img {
