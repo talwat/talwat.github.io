@@ -11,13 +11,23 @@
         </p>
         <p>
           As a person, I don't consider myself married to one field or
-          specialty, and I am undeterred by trying new things. This website
+          specialty. I love trying and learning new things. Thus, this website
           serves as a display of my work, in any field and on any topic.
         </p>
         <div id="links">
           <NuxtLink to="/photography">My Photography</NuxtLink>
           <NuxtLink to="/programming">My Programming</NuxtLink>
         </div>
+        <noscript>
+          <p
+            :style="{
+              color: 'var(--fg-1)',
+            }"
+          >
+            Looks like you aren't using Javascript. No worries, everything still
+            works. Enjoy! :)
+          </p>
+        </noscript>
       </section>
       <section id="graphic">
         <IsoCylinder
@@ -81,13 +91,13 @@ main {
 #about h2 {
   font-size: 3rem;
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: -0.7rem;
 }
 
 #about p {
   font-size: 1.2rem;
   margin-bottom: 1.2rem;
-  margin-top: 0;
+  margin-top: 1.2rem;
 }
 
 #about {

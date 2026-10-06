@@ -2,26 +2,62 @@
 const theme = useColorMode();
 
 function change() {
-  if (theme.preference == "light") {
-    theme.preference = "dark";
-  } else {
-    theme.preference = "light";
-  }
+  theme.preference = theme.value === "dark" ? "light" : "dark";
 }
 </script>
 
 <template>
   <button @click="change">
-    <Icon name="mdi:theme-light-dark" size="1.5rem" />
+    <Icon
+      class="theme-icon loading-theme-icon"
+      name="mdi:radiobox-indeterminate-variant"
+      size="1.5rem"
+    />
+    <Icon
+      class="theme-icon light-theme-icon"
+      name="mdi:weather-night"
+      size="1.5rem"
+    />
+    <Icon
+      class="theme-icon dark-theme-icon"
+      name="mdi:weather-sunny"
+      size="1.5rem"
+    />
   </button>
 </template>
 
-<style lang="css" scoped>
+<style>
 button {
   display: contents;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+.theme-icon {
+  display: none;
+}
+
+.loading-theme-icon {
+  display: inline;
+}
+
+.light-theme-icon,
+.dark-theme-icon {
+  display: none;
+}
+
+.light .loading-theme-icon,
+.dark .loading-theme-icon {
+  display: none;
+}
+
+.light .light-theme-icon {
+  display: inline;
+}
+
+.dark .dark-theme-icon {
+  display: inline;
 }
 </style>
