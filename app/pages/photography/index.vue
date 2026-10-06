@@ -31,23 +31,35 @@ useSeoMeta({
             collection.name
           }}</NuxtLink>
         </h2>
-        <Splide
-          :options="{
-            rewind: true,
-            lazyLoad: 'nearby',
-            type: 'loop',
-            preloadPages: 2,
-            arrows: collection.files.length > 1,
-          }"
-          :aria-label="`image carousel for ${collection.name}`"
-        >
-          <SplideSlide v-for="(file, i) in collection.files">
-            <img
-              :alt="`image ${i} of ${collection.name}`"
-              :data-splide-lazy="`/images/photography/${collection.name}/${file}`"
-            />
-          </SplideSlide>
-        </Splide>
+        <ClientOnly>
+          <template #fallback>
+            <NuxtLink
+              :to="`/photography/${collection.id}`"
+              :style="{ height: '100%' }"
+            >
+              <img
+                :src="`/images/photography/${collection.name}/${collection.files[0]}`"
+              />
+            </NuxtLink>
+          </template>
+          <Splide
+            :options="{
+              rewind: true,
+              lazyLoad: 'nearby',
+              type: 'loop',
+              preloadPages: 2,
+              arrows: collection.files.length > 1,
+            }"
+            :aria-label="`image carousel for ${collection.name}`"
+          >
+            <SplideSlide v-for="(file, i) in collection.files">
+              <img
+                :alt="`image ${i} of ${collection.name}`"
+                :data-splide-lazy="`/images/photography/${collection.name}/${file}`"
+              />
+            </SplideSlide>
+          </Splide>
+        </ClientOnly>
       </section>
     </div>
   </main>
@@ -88,6 +100,7 @@ img {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .collection > div {
