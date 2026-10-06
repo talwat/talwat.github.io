@@ -27,7 +27,7 @@ useSeoMeta({
 </script>
 <template>
   <main>
-    <h1 class="title-underlined">{{ collection.name }}</h1>
+    <h1 class="title">{{ collection.name }}</h1>
     <div id="images">
       <img
         v-for="(file, i) in collection.files"
@@ -40,12 +40,6 @@ useSeoMeta({
 </template>
 
 <style lang="css" scoped>
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 #images {
   display: grid;
   gap: 0.5rem;

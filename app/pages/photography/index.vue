@@ -27,7 +27,9 @@ useSeoMeta({
     <div id="collections">
       <section class="collection" v-for="collection in collections">
         <h2>
-          <a :href="`/photography/${collection.id}`">{{ collection.name }}</a>
+          <NuxtLink :to="`/photography/${collection.id}`">{{
+            collection.name
+          }}</NuxtLink>
         </h2>
         <Splide
           :options="{

@@ -13,7 +13,7 @@ const props = defineProps({
   rings: { type: Number, default: 5 }, // rings, including the top and bottom
   duration: { type: Number, default: 14 }, // seconds per full revolution
   color: { type: String, default: "var(--accent)" }, // front lines + rings
-  backColor: { type: String, default: "var(--fg-1)" }, // lines on the far side
+  backColor: { type: String, default: "var(--bg-3)" }, // lines on the far side
   reverse: { type: Boolean, default: false },
 });
 

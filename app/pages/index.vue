@@ -62,14 +62,15 @@ main {
   padding-bottom: 0rem;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   #graphic {
     display: none !important;
   }
+}
 
+@media (max-width: 600px) {
   #top {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 0;
   }
 }
 
