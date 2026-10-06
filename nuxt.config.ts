@@ -16,6 +16,11 @@ export default defineNuxtConfig({
       preload: true,
     },
   },
+  icon: {
+    clientBundle: {
+      scan: true,
+    },
+  },
   site: {
     url: "talwat.com",
     name: "talwat's website",
