@@ -11,6 +11,9 @@
   --bg-0: #2d353b;
   --bg-1: #343f44;
   --bg-2: #3d484d;
+  --bg-3: #414b50;
+  --bg-4: #4f585e;
+  /* --bg-5: #56635F; */
   --accent: #a7c080;
   --red: #e67e80;
   --orange: #e69875;
@@ -62,12 +65,20 @@ img:not([src]) {
   visibility: hidden;
 }
 
-.title-underlined {
+.title {
   text-align: center;
   padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--bg-1);
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.2rem;
 }
 
 .hover-elevate {

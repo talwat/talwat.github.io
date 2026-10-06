@@ -77,17 +77,18 @@ const categories: Category[] = [
 <template>
   <div id="container">
     <section id="about">
-      <h2>About Me</h2>
+      <h2>About</h2>
       <p>
-        I'm currently a high school student who has been doing programming for
-        around 4 years now. I love computers, and more specifically, computer
-        engineering. I am fascinated by the lower levels of computing, but still
-        enjoy creating higher level applications with newer technologies.
-        Currently, my focus is asynchronous development with
+        I've been doing programming for around 4 years now. I love computers,
+        and more specifically, computer engineering. I am fascinated by the
+        lower levels of computing, but still enjoy creating higher level
+        applications with newer technologies. Currently, my focus is
+        asynchronous development with
         <a href="https://rust-lang.org/">Rust</a> and
         <a href="https://tokio.rs/">tokio</a>.
       </p>
     </section>
+    <div class="separator" />
     <section id="technologies">
       <h2>Technologies I Use</h2>
       <div class="technology-category" v-for="category in categories">
@@ -121,28 +122,14 @@ const categories: Category[] = [
 </template>
 
 <style lang="css" scoped>
-#container {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-#container > * {
-  flex: 1 1 248px;
-  border: 2px solid var(--bg-1);
-  border-radius: 1rem;
-  padding: 1.2rem;
-}
-
 h2 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-size: 2rem;
 }
 
 p {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  font-size: 1.2rem;
 }
 
 #technologies {
@@ -189,5 +176,47 @@ li > a {
 
 a:hover {
   font-style: italic;
+}
+
+#container > section {
+  flex: 1 1 248px;
+  padding: 1.2rem;
+}
+
+#container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+.separator {
+  flex: 0 0 1px;
+  align-self: stretch;
+  background: var(--bg-1);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #container > section {
+    flex: unset;
+    padding: 1.2rem;
+  }
+
+  /* Becomes a horizontal rule */
+  .separator {
+    flex: 0 0 1px;
+    align-self: stretch;
+    width: auto;
+    height: 1px;
+    margin: 0;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
 }
 </style>

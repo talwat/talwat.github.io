@@ -5,6 +5,7 @@ const ORDER = [
   "barcelona",
   "tel-aviv",
   "mitzpe-ramon",
+  "puig-de-dorria",
   "andorra",
   "freiburg",
   "cadi",

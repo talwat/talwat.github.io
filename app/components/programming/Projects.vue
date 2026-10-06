@@ -10,7 +10,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    image: "https://github.com/talwat/geoterm/raw/main/assets/ti84.jpeg",
+    image: "/images/projects/geoterm.jpeg",
     name: "geoterm",
     language: "Rust, C, Python",
     description:
@@ -18,7 +18,7 @@ const projects: Project[] = [
     repo: "geoterm",
   },
   {
-    image: "https://github.com/talwat/lowfi/raw/main/docs/media/example1.png",
+    image: "/images/projects/lowfi.png",
     name: "lowfi",
     language: "Rust",
     description:
@@ -92,7 +92,7 @@ const projects: Project[] = [
 
 <template>
   <section>
-    <h1 class="title-underlined">Projects</h1>
+    <h2 id="title">Projects</h2>
     <div id="projects">
       <a
         class="project hover-elevate"
@@ -105,8 +105,8 @@ const projects: Project[] = [
         target="_blank"
       >
         <div class="project-top">
-          <h2>{{ project.name }}</h2>
-          <p>{{ project.language }}</p>
+          <h3 class="project-title">{{ project.name }}</h3>
+          <p class="project-language">{{ project.language }}</p>
         </div>
 
         <img :alt="`image of ${project.name} by talwat`" :src="project.image" />
@@ -117,9 +117,10 @@ const projects: Project[] = [
 </template>
 
 <style scoped>
-h1 {
-  margin-top: 1.4rem;
-  margin-bottom: 1.1rem;
+#title {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 0.8rem;
 }
 
 #projects {
@@ -129,6 +130,7 @@ h1 {
 }
 
 .project h2,
+.project h3,
 .project p {
   margin: 0;
 }

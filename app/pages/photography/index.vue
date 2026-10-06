@@ -1,9 +1,11 @@
 <script setup lang="ts">
+// @ts-ignore
 import "@splidejs/vue-splide/css";
 
-const collections = (await useFetch("/api/photography")).data.value!;
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
+
+const collections = (await useFetch("/api/photography")).data.value!;
 
 useSeoMeta({
   title: "photography",
@@ -14,9 +16,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <main>
+  <main id="photography">
     <section>
-      <h1 class="title-underlined">Photography</h1>
+      <h1 class="title">Photography</h1>
       <p>
         Here is a collection of photos I've taken with either a Nikon D5500, or
         a Fujifilm X-T3. I'm certainly a beginner, but I try my best.
@@ -31,6 +33,7 @@ useSeoMeta({
           :options="{
             rewind: true,
             lazyLoad: 'nearby',
+            type: 'loop',
             preloadPages: 2,
             arrows: collection.files.length > 1,
           }"
@@ -113,7 +116,7 @@ img {
 </style>
 
 <style lang="css">
-.splide__track {
+#photography .splide__track {
   aspect-ratio: 3 / 2;
 }
 

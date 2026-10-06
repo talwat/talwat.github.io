@@ -10,11 +10,22 @@ import "@/assets/pattern.css";
         <span id="name-he">טל</span>
       </h1>
     </div>
-    <ul id="description">
-      <li>programming</li>
-      <li>photography</li>
-      <li>hiking</li>
-    </ul>
+    <div id="sub">
+      <ul id="description">
+        <li>
+          <Icon name="mdi:location" size="1rem" />
+          <span>Europe</span>
+        </li>
+        <li>
+          <Icon name="mdi:clock" size="1rem" />
+          <span>CET</span>
+        </li>
+      </ul>
+      <div id="languages">
+        <Icon name="mdi:language" size="1rem" />
+        <span>English, Hebrew, Spanish</span>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -82,16 +93,26 @@ section {
   padding: 1.2rem;
 }
 
+#sub {
+  color: var(--fg-2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+}
+
 #description {
   display: flex;
   padding: 0;
   margin: 0;
   align-items: center;
   gap: 1rem;
-  color: var(--fg-2);
 }
 
+#languages,
 #description li {
-  display: inline;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 </style>
