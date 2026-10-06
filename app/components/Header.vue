@@ -79,7 +79,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   z-index: 8;
-  background-color: var(--bg-0);
+  background-color: var(--bg);
   padding: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -137,7 +137,7 @@ a {
   padding: 0.5rem;
   padding-left: 2rem;
   flex-direction: column;
-  background-color: var(--bg-0);
+  background-color: var(--bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 

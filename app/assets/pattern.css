@@ -1,7 +1,7 @@
 .pattern {
   --s: 160px;
-  --c1: var(--bg-0);
-  --c2: var(--bg-1);
+  --c1: var(--bg);
+  --c2: var(--bg-0);
 
   --_g: var(--s) var(--s)
     radial-gradient(var(--c1) 17%, var(--c2) 18% 35%, #0000 36.5%);
