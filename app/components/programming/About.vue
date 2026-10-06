@@ -30,7 +30,11 @@ const categories: Category[] = [
         link: "https://en.wikipedia.org/wiki/C_(programming_language)",
         color: "cyan",
       },
-      { icon: "devicon-plain:java", link: "https://www.java.com", color: "red" },
+      {
+        icon: "devicon-plain:java",
+        link: "https://www.java.com",
+        color: "red",
+      },
       {
         icon: "devicon-plain:kotlin",
         link: "https://kotlinlang.org",
@@ -57,7 +61,11 @@ const categories: Category[] = [
         color: "blue",
       },
       { icon: "mdi:vuejs", link: "https://vuejs.org", color: "green" },
-      { icon: "devicon-plain:svelte", link: "https://svelte.dev", color: "red" },
+      {
+        icon: "devicon-plain:svelte",
+        link: "https://svelte.dev",
+        color: "red",
+      },
     ],
   },
   {

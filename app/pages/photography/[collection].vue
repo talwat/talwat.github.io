@@ -41,14 +41,14 @@ useSeoMeta({
 
 <style lang="css" scoped>
 #images {
-  display: grid;
+  columns: 3 512px;
   gap: 0.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
 }
 
 img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  display: block;
+  margin-bottom: 0.5rem;
+  break-inside: avoid;
 }
 </style>
