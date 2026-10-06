@@ -20,6 +20,7 @@
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
+    "@iconify-json/devicon-plain": "^1.2.61",
     "@iconify-json/mdi": "^1.2.3",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@splidejs/vue-splide": "^0.6.12",

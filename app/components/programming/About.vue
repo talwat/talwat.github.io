@@ -14,25 +14,25 @@ const categories: Category[] = [
   {
     name: "Programming Languages",
     technologies: [
-      { icon: "simple-icons:go", link: "https://go.dev", color: "blue" },
+      { icon: "mdi:language-go", link: "https://go.dev", color: "blue" },
       {
-        icon: "simple-icons:python",
+        icon: "devicon-plain:python",
         link: "https://www.python.org",
         color: "yellow",
       },
       {
-        icon: "simple-icons:rust",
+        icon: "devicon-plain:rust",
         link: "https://www.rust-lang.org",
         color: "orange",
       },
       {
-        icon: "devicon:c",
+        icon: "devicon-plain:c",
         link: "https://en.wikipedia.org/wiki/C_(programming_language)",
         color: "cyan",
       },
-      { icon: "ri:java-fill", link: "https://www.java.com", color: "red" },
+      { icon: "devicon-plain:java", link: "https://www.java.com", color: "red" },
       {
-        icon: "simple-icons:kotlin",
+        icon: "devicon-plain:kotlin",
         link: "https://kotlinlang.org",
         color: "purple",
       },
@@ -42,30 +42,30 @@ const categories: Category[] = [
     name: "Frontend/Web",
     technologies: [
       {
-        icon: "simple-icons:html5",
+        icon: "devicon-plain:html5",
         link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
         color: "orange",
       },
       {
-        icon: "simple-icons:javascript",
+        icon: "devicon-plain:javascript",
         link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
         color: "yellow",
       },
       {
-        icon: "akar-icons:typescript-fill",
+        icon: "devicon-plain:typescript",
         link: "https://www.typescriptlang.org",
         color: "blue",
       },
       { icon: "mdi:vuejs", link: "https://vuejs.org", color: "green" },
-      { icon: "simple-icons:svelte", link: "https://svelte.dev", color: "red" },
+      { icon: "devicon-plain:svelte", link: "https://svelte.dev", color: "red" },
     ],
   },
   {
     name: "Miscellaneous",
     technologies: [
-      { icon: "simple-icons:git", link: "https://git-scm.com", color: "red" },
+      { icon: "devicon-plain:git", link: "https://git-scm.com", color: "red" },
       {
-        icon: "codicon:terminal-linux",
+        icon: "devicon-plain:linux",
         link: "https://www.kernel.org",
         color: "green",
       },
