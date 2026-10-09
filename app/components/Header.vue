@@ -33,10 +33,9 @@ onMounted(() => {
     <nav>
       <div id="left">
         <ThemeSwitcher />
-        <p id="name">talwat</p>
       </div>
       <div id="pages">
-        <NuxtLink v-for="page in pages" :to="page.link">{{
+        <NuxtLink class="page-link" v-for="page in pages" :to="page.link">{{
           page.name
         }}</NuxtLink>
       </div>
@@ -96,13 +95,11 @@ nav > * {
 }
 
 nav * {
-  text-decoration: none;
   color: var(--fg);
   margin: 0;
 }
 
 a {
-  text-decoration: none;
   color: var(--fg);
 }
 

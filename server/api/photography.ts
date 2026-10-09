@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
-import { join } from "path";
+import { resolve } from "path";
+import { contents } from "../utils";
 
 const ORDER = [
   "barcelona",
@@ -30,24 +31,18 @@ export function toAscii(input: string): string {
 }
 
 export default defineEventHandler(async () => {
-  const basePath = join(process.cwd(), "public/images/photography");
-  const directory = await fs.readdir(basePath, {
-    recursive: true,
-    withFileTypes: true,
-  });
-
+  const entries = await contents("public/images/photography", true);
   const collections = new Map<string, Collection>();
-  for (const file of directory) {
-    if (!file.isFile()) continue;
-    if (file.name == ".DS_Store") continue;
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
 
-    const parent = file.parentPath.split("/").at(-1)!;
+    const parent = entry.parentPath.split("/").at(-1)!;
     if (!collections.has(parent)) {
       collections.set(parent, { name: parent, id: toAscii(parent), files: [] });
     }
 
     const collection = collections.get(parent)!;
-    collection.files.push(file.name);
+    collection.files.push(entry.name);
   }
 
   const sorted = Array.from(collections.values()).sort((a, b) => {

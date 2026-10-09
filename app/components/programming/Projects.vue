@@ -139,6 +139,7 @@ const projects: Project[] = [
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 .project-top {

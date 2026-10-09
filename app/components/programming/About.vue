@@ -182,10 +182,6 @@ li > a {
   width: 32px;
 }
 
-a:hover {
-  font-style: italic;
-}
-
 #container > section {
   flex: 1 1 248px;
   padding: 1.2rem;

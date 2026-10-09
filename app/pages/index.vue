@@ -61,7 +61,6 @@ main {
 
 #links a {
   font-size: 1.2rem;
-  text-decoration: none;
 }
 
 #top {

@@ -73,7 +73,6 @@ p {
 
 a {
   color: var(--fg);
-  text-decoration: none;
 }
 
 .collection h2 {

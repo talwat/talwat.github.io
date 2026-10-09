@@ -1,3 +1,6 @@
+# Custom
+documents/typst/*/output
+
 # Nuxt dev/build outputs
 .output
 .data
