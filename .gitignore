@@ -1,5 +1,5 @@
 # Custom
-documents/typst/*/output
+generated
 
 # Nuxt dev/build outputs
 .output

@@ -2,11 +2,11 @@
 const name = useRoute().params.name;
 if (!name) throw createError({ status: 400 });
 
-const { data: pages, error } = (await useFetch<string[]>(`/api/documents/${name}`));
+const { data, error } = (await useFetch<{ pages: string[] }>(`/api/documents/${name}`));
 const scale = ref(80);
 
 function resize(amount: number) {
-  scale.value = Math.max(30, Math.min(150, scale.value + amount));
+  scale.value = Math.max(30, Math.min(100, scale.value + amount));
 }
 </script>
 
@@ -17,15 +17,13 @@ function resize(amount: number) {
       <span>{{ scale }}%</span>
       <button @click="resize(10)" :disabled="scale >= 150"><Icon name="mdi:plus" /></button>
     </div>
-    <div class="typst-scroll">
-      <div class="typst-pages">
-        <div class="typst-page" v-for="page in pages" :key="page" v-html="page" />
-      </div>
+    <div class="pages">
+      <img class="page" v-for="page in data?.pages" :key="page" :src="page" loading="lazy" />
     </div>
   </div>
 </template>
 
-<style lang="css">
+<style lang="css" scoped>
 .toolbar {
   position: sticky;
   top: 4.5rem;
@@ -34,8 +32,7 @@ function resize(amount: number) {
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem;
-  margin: 0.5rem;
-  margin-top: 0.8rem;
+  margin: 0.6rem;
   background: var(--bg);
   border: 1px solid var(--bg-1);
   color: var(--fg);
@@ -63,26 +60,22 @@ function resize(amount: number) {
   width: 100%;
 }
 
-.typst-scroll {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.typst-pages {
+.pages {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  gap: 0.4rem;
 }
 
-.typst-page {
-  width: v-bind('scale - 4 + "%"');
-  margin-inline: auto;
-}
-
-.typst-page svg {
-  width: 100%;
-  height: auto;
+.page {
+  width: v-bind('scale + "%"');
   border: 1px solid var(--bg-1);
-  margin: 0.2rem;
+  aspect-ratio: 1 / 1.4142;
 }
 </style>
