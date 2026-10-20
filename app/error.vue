@@ -3,8 +3,8 @@ const error = useError().value!;
 console.log(error);
 
 useSeoMeta({
-  title: `${error.statusCode} Error`,
-  ogTitle: `${error.statusCode} Error`,
+  title: `${error.status} Error`,
+  ogTitle: `${error.status} Error`,
   description: `${error.message}`,
   ogDescription: `${error.message}`,
 });

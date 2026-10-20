@@ -17,6 +17,7 @@
     "@nuxtjs/sitemap": "8.6.1",
     "nuxt": "^4.6.0",
     "vue": "^3.5.43",
+    "vue-pdf-embed": "^2.1.7",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
