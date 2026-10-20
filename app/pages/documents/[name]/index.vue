@@ -12,20 +12,21 @@ if (error.value) throw error.value;
 const pages = data.value?.pages;
 if (!pages) throw createError({ status: 500 });
 
-const scale = ref(0.5);
+const scale = ref(50);
 function resize(amount: number) {
   scale.value += amount;
+  console.log(scale.value);
 }
 </script>
 
 <template>
   <main>
     <div id="toolbar">
-      <button @click="resize(-0.1)" :disabled="scale <= 0.3">
+      <button @click="resize(-10)" :disabled="scale <= 30">
         <Icon name="mdi:minus" />
       </button>
-      <span>{{ (scale * 100).toFixed(0) }}%</span>
-      <button @click="resize(0.1)" :disabled="scale >= 4.0">
+      <span>{{ scale }}%</span>
+      <button @click="resize(10)" :disabled="scale >= 100">
         <Icon name="mdi:plus" />
       </button>
     </div>
@@ -83,7 +84,7 @@ main {
 }
 
 :global(.vue-pdf-embed > div) {
-  width: v-bind('scale * 100 + "%"');
+  width: v-bind('scale + "%"');
   border: 1px solid var(--bg-1);
 }
 
