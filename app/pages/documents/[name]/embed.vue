@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import EmbedPages from '~/components/EmbedPages.vue';
+
 const name = useRoute().params.name;
 if (!name) throw createError({ status: 400 });
 
@@ -10,30 +12,7 @@ if (error.value) throw error.value;
 
 <template>
   <main>
-    <h1>Example Math Notes</h1>
-    <img
-      id="page"
-      v-for="(page, index) in data?.pages"
-      :key="index"
-      :src="page"
-    />
+    <h1 class="title">Embed of {{ name }}</h1>
+    <EmbedPages :pages="data!.pages" />
   </main>
 </template>
-
-<style lang="css" scoped>
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#page {
-  width: 100%;
-  max-width: 60em;
-  height: auto;
-}
-
-:global(.dark #page) {
-  filter: invert(1);
-}
-</style>

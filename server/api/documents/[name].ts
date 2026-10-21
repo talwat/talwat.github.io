@@ -48,7 +48,7 @@ export default defineEventHandler(async (event) => {
   try {
     await fs.access(input);
   } catch {
-    throw createError({ status: 404 });
+    throw createError({ status: 404, message: "Document not found." });
   }
 
   const folder = `${name}/${transparent ? "transparent" : "paged"}`;
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
   await fs.mkdir(outdir, { recursive: true });
 
   let output = resolve(outdir, `${name}.${format}`);
-  if (format == "svg") output = resolve(outdir, `{n}.svg`);
+  if (format == "svg" || format == "png") output = resolve(outdir, `{n}.${format}`);
 
   await compile(input, output, transparent);
   const pages = (await contents(outdir, false))
