@@ -6,7 +6,7 @@ import { promisify } from "util";
 
 const sourceDir = resolve(process.cwd(), "documents/typst/");
 const publicDir = resolve(process.cwd(), "public/generated/documents/");
-const typst = "/opt/homebrew/bin/typst";
+const typst = process.env.TYPST_PATH ?? "typst";
 
 async function compile(input: string, output: string, transparent: boolean) {
   let preamble = "";

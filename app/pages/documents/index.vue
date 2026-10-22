@@ -1,4 +1,11 @@
 <script lang="ts" setup>
+useSeoMeta({
+  title: "Miscellaneous",
+  ogTitle: "Miscellaneous",
+  description: "Miscellaneous documents and archive.",
+  ogDescription: "Miscellaneous documents and archive",
+});
+
 import Entry from "~/components/documents/Entry.vue";
 import type { Item } from "~~/shared/types";
 

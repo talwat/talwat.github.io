@@ -16,7 +16,7 @@ if (!collection) {
   throw error;
 }
 
-const title = `${collection.name.toLocaleLowerCase()} collection`;
+const title = `Photography | ${collection.name}`;
 const description = `A small collection of photos from ${collection.name}.`;
 useSeoMeta({
   title: title,

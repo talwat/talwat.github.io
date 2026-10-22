@@ -8,8 +8,8 @@ import { Splide, SplideSlide } from "@splidejs/vue-splide";
 const collections = (await useFetch("/api/photography")).data.value!;
 
 useSeoMeta({
-  title: "photography",
-  ogTitle: "photography",
+  title: "Photography",
+  ogTitle: "Photography",
   description: "Tal's photography portfolio.",
   ogDescription: "Tal's photography portfolio.",
 });

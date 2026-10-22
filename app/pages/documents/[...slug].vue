@@ -11,6 +11,13 @@ if (typeof id != "string") id = id.join("/");
 const list = (await useFetch<Item[]>("/api/documents/list")).data.value ?? [];
 const item = list.find((x) => x.id == id);
 
+useSeoMeta({
+  title: item?.meta.title ?? "Document",
+  ogTitle: item?.meta.title ?? "Document",
+  description: item?.meta.description ?? "A document lying around.",
+  ogDescription: item?.meta.description ?? "A document lying around.",
+});
+
 if (!item)
   throw createError({
     status: 404,

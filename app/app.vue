@@ -2,8 +2,8 @@
 useSeoMeta({
   title: "talwat",
   ogTitle: "talwat",
-  description: "Tal's developer portfolio.",
-  ogDescription: "Tal's developer portfolio.",
+  description: "Tal's fairly straightforward website.",
+  ogDescription: "Tal's fairly straightforward website.",
 });
 
 useHead({
