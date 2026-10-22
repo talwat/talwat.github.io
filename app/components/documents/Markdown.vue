@@ -14,7 +14,7 @@ if (error.value) throw error.value;
 </script>
 
 <template>
-  <main>
+  <main class="wide-margin-main">
     <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
     <Suspense>
       <Markdown :plugins="[rangi({ theme: catppuccin, lineNumbers: true })]">{{
@@ -23,12 +23,3 @@ if (error.value) throw error.value;
     </Suspense>
   </main>
 </template>
-
-<style lang="css" scoped>
-main {
-  margin-left: 8rem;
-  margin-right: 8rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-</style>
