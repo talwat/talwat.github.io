@@ -5,8 +5,9 @@ import { exists } from "~~/server/utils";
 const sourceDir = resolve(process.cwd(), "documents/markdown/");
 
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, "slug");
-  if (!id) throw createError({ status: 400 });
+  const slug = getRouterParam(event, "slug");
+  if (!slug) throw createError({ status: 400 });
+  const id = slug.replace(/\/+$/, "");
 
   const input = resolve(sourceDir, `${id}.md`);
   await exists(input, true);

@@ -27,14 +27,14 @@ useSeoMeta({
     <div id="collections">
       <section class="collection" v-for="collection in collections">
         <h2>
-          <NuxtLink :to="`/photography/${collection.id}`">{{
+          <NuxtLink :to="`/photography/${collection.id}/`">{{
             collection.name
           }}</NuxtLink>
         </h2>
         <ClientOnly>
           <template #fallback>
             <NuxtLink
-              :to="`/photography/${collection.id}`"
+              :to="`/photography/${collection.id}/`"
               :style="{ height: '100%' }"
             >
               <img
