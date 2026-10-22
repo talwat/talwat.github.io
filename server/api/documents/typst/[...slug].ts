@@ -10,21 +10,18 @@ const typst = "/opt/homebrew/bin/typst";
 
 async function compile(input: string, output: string, transparent: boolean) {
   let preamble = "";
-  if (transparent) preamble = await fs.readFile(
-    resolve(sourceDir, "transparent.typ"),
-    "utf-8",
-  );
+  if (transparent)
+    preamble = await fs.readFile(
+      resolve(sourceDir, "transparent.typ"),
+      "utf-8",
+    );
 
   const source = await fs.readFile(input, "utf-8");
   const temporary = resolve(dirname(input), `.tmp-${basename(input)}`);
 
   try {
     await fs.writeFile(temporary, `${preamble}\n${source}`);
-    await promisify(execFile)(typst, [
-      "compile",
-      temporary,
-      output,
-    ]);
+    await promisify(execFile)(typst, ["compile", temporary, output]);
   } finally {
     await fs.rm(temporary, { force: true });
   }
@@ -37,8 +34,13 @@ export default defineEventHandler(async (event) => {
     transparent: boolean;
   }>(event);
 
-  if (!id) throw createError({ status: 400, message: "Missing name URL parameter." });
-  if (!format) throw createError({ status: 400, message: "Missing format query parameter." });
+  if (!id)
+    throw createError({ status: 400, message: "Missing name URL parameter." });
+  if (!format)
+    throw createError({
+      status: 400,
+      message: "Missing format query parameter.",
+    });
 
   const workDir = resolve(sourceDir, id);
   const input = resolve(workDir, "main.typ");
@@ -49,7 +51,8 @@ export default defineEventHandler(async (event) => {
   await fs.mkdir(outdir, { recursive: true });
 
   let output = resolve(outdir, `${id}.${format}`);
-  if (format == "svg" || format == "png") output = resolve(outdir, `{n}.${format}`);
+  if (format == "svg" || format == "png")
+    output = resolve(outdir, `{n}.${format}`);
 
   await compile(input, output, transparent);
   const pages = (await contents(outdir, false))

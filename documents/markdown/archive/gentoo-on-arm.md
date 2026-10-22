@@ -3,13 +3,13 @@ title: "Gentoo on ARM"
 date: "3/2/2023"
 desc: "The various hurdles of installing gentoo on an ARM computer."
 tags:
-    - arm
-    - gentoo
-    - linux
-    - aarch64
-    - arm64
-    - utm
-    - qemu
+  - arm
+  - gentoo
+  - linux
+  - aarch64
+  - arm64
+  - utm
+  - qemu
 ---
 
 ## The context

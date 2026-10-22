@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Item } from '~~/shared/types';
+import type { Item } from "~~/shared/types";
 
 const { item } = defineProps<{ item: Item }>();
 </script>

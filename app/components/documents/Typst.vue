@@ -2,8 +2,8 @@
 import VuePdfEmbed from "vue-pdf-embed";
 import type { Metadata } from "~~/shared/types";
 
-const { id } = defineProps<{ id: string }>()
-const { data, error } = await useFetch<{ pages: string[], meta: Metadata }>(
+const { id } = defineProps<{ id: string }>();
+const { data, error } = await useFetch<{ pages: string[]; meta: Metadata }>(
   `/api/documents/typst/${id}?format=pdf`,
 );
 if (error.value) throw error.value;

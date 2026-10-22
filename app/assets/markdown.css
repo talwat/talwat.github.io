@@ -41,5 +41,3 @@ pre > code > .line::before {
 :root:not(.light) .shj span {
   color: var(--shiki-dark) !important;
 }
-
-

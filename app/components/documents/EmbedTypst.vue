@@ -10,7 +10,12 @@ if (error.value) throw error.value;
 
 <template>
   <div id="pages">
-    <img id="page" v-for="(page, index) in data?.pages" :key="index" :src="page" />
+    <img
+      id="page"
+      v-for="(page, index) in data?.pages"
+      :key="index"
+      :src="page"
+    />
   </div>
 </template>
 

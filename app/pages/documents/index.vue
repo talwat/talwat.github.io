@@ -1,24 +1,24 @@
 <script lang="ts" setup>
-import Entry from '~/components/documents/Entry.vue';
-import type { Item } from '~~/shared/types';
+import Entry from "~/components/documents/Entry.vue";
+import type { Item } from "~~/shared/types";
 
 const list = (await useFetch<Item[]>("/api/documents/list")).data.value ?? [];
 
 interface Category {
-  name: string,
-  items: Item[]
+  name: string;
+  items: Item[];
 }
 
 const categories: Category[] = [
   {
     name: "Blog Archive",
-    items: list.filter(x => x.id.startsWith("archive/"))
+    items: list.filter((x) => x.id.startsWith("archive/")),
   },
   {
     name: "Math & Physics",
-    items: list.filter(x => x.type == "typst")
-  }
-]
+    items: list.filter((x) => x.type == "typst"),
+  },
+];
 </script>
 <template>
   <main>

@@ -111,7 +111,7 @@ img {
     padding: 0;
   }
 
-  .collection {   
+  .collection {
     padding-top: 1rem;
     border-top: 1px solid var(--bg-1);
   }

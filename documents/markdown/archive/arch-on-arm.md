@@ -3,14 +3,14 @@ title: "Arch on generic ARM"
 date: "3/9/2023"
 desc: "How to install generic Arch Linux ARM."
 tags:
-    - arm
-    - archlinx
-    - arch
-    - linux
-    - aarch64
-    - arm64
-    - utm
-    - qemu
+  - arm
+  - archlinx
+  - arch
+  - linux
+  - aarch64
+  - arm64
+  - utm
+  - qemu
 ---
 
 ## Why?
