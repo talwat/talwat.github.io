@@ -9,6 +9,7 @@
   --fg-1: #a5adcb;
   --fg-2: #b8c0e0;
 
+  --code: #1e1e2e;
   --bg-0: #1e2030;
   --bg: #24273a;
   --bg-1: #363a4f;
@@ -33,6 +34,7 @@
   --fg-1: #6c6f85;
   --fg-2: #5c5f77;
 
+  --code: #dce0e8;
   --bg-0: #e6e9ef;
   --bg: #eff1f5;
   --bg-1: #ccd0da;
@@ -81,17 +83,9 @@ img:not([src]) {
   text-align: center;
   padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--bg-1);
-  margin-top: 0;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-size: 2rem;
-}
-
-h2 {
-  font-size: 1.8rem;
-}
-
-h3 {
-  font-size: 1.2rem;
 }
 
 .hover-elevate {
@@ -102,7 +96,6 @@ h3 {
   color: var(--fg);
 
   border: 2px solid var(--bg-1);
-  border-radius: 1rem;
   padding: 1rem;
 }
 

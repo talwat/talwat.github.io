@@ -184,7 +184,7 @@ li > a {
 
 #container > section {
   flex: 1 1 248px;
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
 #container {
@@ -209,7 +209,7 @@ li > a {
 
   #container > section {
     flex: unset;
-    padding: 1.2rem;
+    padding: 1rem;
   }
 
   /* Becomes a horizontal rule */

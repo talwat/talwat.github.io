@@ -158,5 +158,6 @@ img {
   max-height: 14rem;
   max-width: calc(100% - 2rem);
   object-fit: contain;
+  aspect-ratio: 3/2;
 }
 </style>

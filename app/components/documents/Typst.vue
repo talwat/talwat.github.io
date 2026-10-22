@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import VuePdfEmbed from "vue-pdf-embed";
+import type { Metadata } from "~~/shared/types";
 
-const name = useRoute().params.name;
-if (!name) throw createError({ status: 400 });
-
-const { data, error } = await useFetch<{ pages: string[] }>(
-  `/api/documents/${name}?format=pdf`,
+const { id } = defineProps<{ id: string }>()
+const { data, error } = await useFetch<{ pages: string[], meta: Metadata }>(
+  `/api/documents/typst/${id}?format=pdf`,
 );
 if (error.value) throw error.value;
 
@@ -20,7 +19,7 @@ function resize(amount: number) {
 </script>
 
 <template>
-  <main>
+  <div id="container">
     <div id="toolbar">
       <button @click="resize(-10)" :disabled="scale <= 30">
         <Icon name="mdi:minus" />
@@ -33,7 +32,7 @@ function resize(amount: number) {
     <ClientOnly>
       <VuePdfEmbed v-if="pages[0]" :source="pages[0]" :width="1000" />
     </ClientOnly>
-  </main>
+  </div>
 </template>
 
 <style lang="css" scoped>
@@ -45,11 +44,9 @@ function resize(amount: number) {
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem;
-  margin-top: 0.5rem;
   background: var(--bg);
   border: 1px solid var(--bg-1);
   color: var(--fg);
-  border-radius: 0.5rem;
   user-select: none;
 }
 
@@ -66,7 +63,7 @@ function resize(amount: number) {
   cursor: default;
 }
 
-main {
+#container {
   display: flex;
   flex-direction: column;
   align-items: center;

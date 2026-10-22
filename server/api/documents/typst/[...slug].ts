@@ -1,30 +1,26 @@
-import { execFile, spawn } from "child_process";
+import { execFile } from "child_process";
 import { promises as fs } from "fs";
 import { basename, dirname, resolve } from "path";
-import { contents } from "~~/server/utils";
-import { tmpdir } from "os";
+import { exists, contents, getMeta } from "~~/server/utils";
 import { promisify } from "util";
 
-const sourceDir = resolve(process.cwd(), "documents/typst");
+const sourceDir = resolve(process.cwd(), "documents/typst/");
 const publicDir = resolve(process.cwd(), "public/generated/documents/");
+const typst = "/opt/homebrew/bin/typst";
 
-const execFileAsync = promisify(execFile);
 async function compile(input: string, output: string, transparent: boolean) {
-  if (!transparent) {
-    await execFileAsync("/opt/homebrew/bin/typst", ["compile", input, output]);
-    return;
-  }
-
-  const preamble = await fs.readFile(
+  let preamble = "";
+  if (transparent) preamble = await fs.readFile(
     resolve(sourceDir, "transparent.typ"),
     "utf-8",
   );
-  const source = await fs.readFile(input, "utf-8");
 
+  const source = await fs.readFile(input, "utf-8");
   const temporary = resolve(dirname(input), `.tmp-${basename(input)}`);
+
   try {
     await fs.writeFile(temporary, `${preamble}\n${source}`);
-    await execFileAsync("/opt/homebrew/bin/typst", [
+    await promisify(execFile)(typst, [
       "compile",
       temporary,
       output,
@@ -35,27 +31,24 @@ async function compile(input: string, output: string, transparent: boolean) {
 }
 
 export default defineEventHandler(async (event) => {
-  const name = getRouterParam(event, "name");
+  const id = getRouterParam(event, "slug");
   const { format, transparent } = getQuery<{
     format: string;
     transparent: boolean;
   }>(event);
 
-  if (!name || !format) throw createError({ status: 400 });
+  if (!id) throw createError({ status: 400, message: "Missing name URL parameter." });
+  if (!format) throw createError({ status: 400, message: "Missing format query parameter." });
 
-  const workdir = resolve(sourceDir, name);
-  const input = resolve(workdir, "main.typ");
-  try {
-    await fs.access(input);
-  } catch {
-    throw createError({ status: 404, message: "Document not found." });
-  }
+  const workDir = resolve(sourceDir, id);
+  const input = resolve(workDir, "main.typ");
+  await exists(input, true);
 
-  const folder = `${name}/${transparent ? "transparent" : "paged"}`;
+  const folder = `typst/${id}/${transparent ? "transparent" : "paged"}`;
   const outdir = resolve(publicDir, folder);
   await fs.mkdir(outdir, { recursive: true });
 
-  let output = resolve(outdir, `${name}.${format}`);
+  let output = resolve(outdir, `${id}.${format}`);
   if (format == "svg" || format == "png") output = resolve(outdir, `{n}.${format}`);
 
   await compile(input, output, transparent);
@@ -65,5 +58,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     pages,
+    meta: await getMeta(workDir, "typst"),
   };
 });

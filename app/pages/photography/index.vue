@@ -66,11 +66,6 @@ useSeoMeta({
 </template>
 
 <style scoped>
-p {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 a {
   color: var(--fg);
 }
@@ -79,11 +74,6 @@ a {
   text-align: center;
   margin: 0;
   margin-bottom: 1rem;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
 }
 
 img {
@@ -96,7 +86,6 @@ img {
   border: 2px solid var(--bg-1);
   padding: 1rem;
   margin: 0;
-  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -109,14 +98,10 @@ img {
 #collections {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1rem 1rem;
 }
 
 @media (max-width: 800px) {
-  p {
-    margin-bottom: 0;
-  }
-
   #collections {
     grid-template-columns: 1fr;
   }
@@ -124,8 +109,17 @@ img {
   .collection {
     border: 0;
     padding: 0;
-    margin-top: 1rem;
   }
+
+  .collection {   
+    padding-top: 1rem;
+    border-top: 1px solid var(--bg-1);
+  }
+
+  /* .collection:not(:last-child) {   
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bg-1);
+  } */
 }
 </style>
 

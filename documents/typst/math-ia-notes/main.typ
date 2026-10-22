@@ -4,7 +4,49 @@
   size: 16pt
 )
 
+#set heading(numbering: "1.")
 #outline()
+
+#pagebreak()
+
+= Aims
+
+- How can the displacement of a falling object be modeled with a quadratic relationship between it's drag force and velocity (ODE)?
+
+= Key Notes
+
+1. Get some data of a falling object as displacement in relation to time, probably through a camera
+2. Represent that data as a bunch of discrete points
+3. Take the discrete first derivative, see @discrete-d
+4. Compare unique strategy of modeling function with naive approach to see if it's better
+5. Use the residual and $R^2$ values to evaluate the different modeling approaches.
+
+This IA, I think anyway, is a fairly unique/clever approach to modeling data which involves differential equations in order to distill complex functions into easy and *precise* models.
+
+By using the derived displacement function and adding some noise to simulate real data, we can arrive at these two graphs:
+
+#grid(
+  columns: 2,
+  [#figure(
+    caption: [
+      Graph of Displacement vs. Time
+      
+      $R^2=0.9827 "vs" R^2 approx 1$
+    ], 
+    image("graphs/displacement.svg")
+  )<displacement-graph>],
+  [#figure(
+    caption: [
+      Graph of Velocity vs. Time
+      
+      $R^2=0.8275 "vs" R^2=0.9827$
+    ],
+    image("graphs/velocity.svg")
+  )<velocity-graph>],
+  gutter: 2em
+)
+
+As seen in @displacement-graph, the naive model for displacement seems nearly identical to the mathematically derived model. However, as we see in @velocity-graph, it performs significantly worse when differentiated.
 
 = Derivations
 
@@ -87,7 +129,7 @@ tv/2ln ((tv + v)/(tv - v)) = g t \
 ln ((tv + v)/(tv - v)) = (2 g t)/tv \
 ln ((tv + v)/(tv - v)) = (2 g t)/tv \
 
-#let egt = $e^(2 g t slash tv)$
+#let egt = $e^frac(2 g t, tv, style: "vertical")$
 
 (tv + v)/(tv - v) = egt \
 tv + v = tv egt - v egt \
@@ -102,7 +144,6 @@ $
 
 $
 #let tgv = $(2g)/tv$
-#let fegt = $4 g t slash tv$
 #let prelude = $tv t - tv^2/g$
 
 ds/dt = tv (egt - 1)/(egt + 1) \
@@ -163,7 +204,40 @@ $
 == Results
 
 $
-a(t) &= g - g v^2/tv^2 \
+a(t) &= g(1 - v^2/tv^2) \
 v(t) &= tv (egt - 1)/(egt + 1) \
 s(t) &= tv^2/g legtw - tv t \
+$
+
+#pagebreak()
+= Discrete Derivatives <discrete-d>
+
+This uses desmos notation, which is a bit funny.
+
+== Definitions
+
+$
+"Let" h "be the step size" \
+"Let" x_1 "be a vector of the x values" \
+"Let" y_1 "be a vector of the y values" \
+"Let" alpha_1 "be a vector of the discrete first derivative points of y" \
+// "Let" beta_1 "be a vector of the discrete second derivative points of y" \
+"Let" n "be the number of data points" \
+$
+
+== Desmos Equations
+$
+x in RR, 0 < x < X \
+x_1 = [0,h,...X] \
+y_1 = f(x_1) \
+n = x_1".length" \
+mline \
+"Definitions of the derivative adapted to Desmos discrete vector notation" \
+f'(x) = lim_(h->0) (f(x+1)-f(x))/h \
+alpha_1=(y_1[2...n]-y_1[1...n-1])/h \
+// beta_1 = (y_1[3...n] - 2y_1[2...n-1] + y_1[1...n-2]) / h^2 \
+mline \
+"Graph" y' "Points: " key((x_1 + h/2, alpha_1))
+\
+"Graph" y'' "Points: " key((x_1 + h, beta_1)) \
 $

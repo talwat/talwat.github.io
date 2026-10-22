@@ -88,7 +88,7 @@ main {
 }
 
 #about h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 0.5rem;
   margin-bottom: -0.7rem;
 }

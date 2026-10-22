@@ -8,6 +8,7 @@ const pages: Page[] = [
   { name: "Home", link: "/" },
   { name: "Programming", link: "/programming/" },
   { name: "Photography", link: "/photography/" },
+  { name: "Miscellaneous", link: "/documents/" },
 ];
 
 interface Social {

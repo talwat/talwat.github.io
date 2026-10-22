@@ -1,0 +1,45 @@
+code {
+  font-size: 1rem;
+  background-color: var(--code);
+  padding: 0.2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+pre > code {
+  padding: 0;
+  background: none;
+  display: block;
+}
+
+pre {
+  background-color: var(--code);
+  padding: 1rem;
+  padding-left: 0.5rem;
+  word-wrap: break-word;
+  max-width: min-content;
+  width: 100%;
+  overflow-x: scroll;
+  counter-reset: line;
+  box-sizing: border-box;
+}
+
+pre > code > .line {
+  display: block;
+  counter-increment: line;
+}
+
+pre > code > .line::before {
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  text-align: right;
+  user-select: none;
+}
+
+:root:not(.light) .shj span {
+  color: var(--shiki-dark) !important;
+}
+
+
