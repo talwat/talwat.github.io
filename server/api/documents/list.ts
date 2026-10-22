@@ -1,7 +1,25 @@
-import { contents, exists, getMeta } from "~~/server/utils";
+import { contents, exists } from "~~/server/utils";
 import path from "path";
 import { Dirent } from "fs";
-import { DocumentType, Item } from "~~/shared/types";
+import { promises as fs } from "fs";
+import { DocumentType, Item, Metadata } from "~~/shared/types";
+import { parseMarkdown } from "comark";
+
+// Input is a file for markdown and a directory for typst.
+async function getMeta(input: string, type: DocumentType): Promise<Metadata> {
+  if (type == "markdown") {
+    const document = await parseMarkdown((await fs.readFile(input)).toString());
+    return document.frontmatter;
+  }
+
+  try {
+    const data = await fs.readFile(path.resolve(input, "meta.json"), "utf-8");
+    return JSON.parse(data) as Metadata;
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code !== "ENOENT") throw err;
+    return {};
+  }
+}
 
 const documentsDir = path.resolve(process.cwd(), "documents");
 

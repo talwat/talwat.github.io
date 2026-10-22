@@ -6,5 +6,6 @@ const { item } = defineProps<{ item: Item }>();
 <template>
   <div>
     <NuxtLink :to="`/documents/${item.id}`">{{ item.meta.title }}</NuxtLink>
+    <span v-if="item.meta.description"> / {{ item.meta.description }}</span>
   </div>
 </template>

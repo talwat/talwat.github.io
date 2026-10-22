@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import { resolve } from "path";
-import { exists, getMeta } from "~~/server/utils";
+import { exists } from "~~/server/utils";
 
 const sourceDir = resolve(process.cwd(), "documents/markdown/");
 
@@ -13,6 +13,5 @@ export default defineEventHandler(async (event) => {
 
   return {
     content: (await fs.readFile(input)).toString(),
-    meta: await getMeta(input, "markdown"),
   };
 });

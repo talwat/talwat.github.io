@@ -87,6 +87,7 @@ nav {
 }
 
 nav > * {
+  font-size: 1.1rem;
   flex-grow: 1;
   flex-basis: 0;
   display: flex;

@@ -1,51 +1,24 @@
 ---
-title: "Arch on generic ARM"
+title: "Arch on (generic) ARM"
 date: "3/9/2023"
-desc: "How to install generic Arch Linux ARM."
-tags:
-  - arm
-  - archlinx
-  - arch
-  - linux
-  - aarch64
-  - arm64
-  - utm
-  - qemu
+description: "How to install generic Arch Linux ARM."
 ---
 
 ## Why?
 
-Arch Linux is a good distro, but it doesn't **officially** support ARM.
-
-This is a problem if you want to actually run it on an ARM based computer.
-
-So, the [Arch Linux ARM](https://archlinuxarm.org/) project exists, aiming to support lots of ARM computers.
-
-But there is a problem, if you are trying to install it on a generic VM or a computer not explicitly explained by their guides,
-then you need to use the generic guide, which is essentially boils down to: "DIY".
+Arch Linux is a good distro, but it doesn't **officially** support ARM. Thus, the unofficial [Arch Linux ARM](https://archlinuxarm.org/) project exists, aiming to support lots of ARM computers. There is a problem however, if you are trying to install it on a generic VM or a computer not explicitly mentioned by their guides then you need to use the generic guide, which is essentially boils down to: "DIY".
 
 So, if you want to install Arch Linux ARM on a **generic** ARM computer (like QEMU or UTM on Apple M1), then read on.
 
 ## Note
 
-This might work or might not. It will only work on UEFI systems and I have only tested this on a VM, be cautious
-if you are doing it on real hardware.
-
-Also, if you are using something like the raspberry pi, you should use the [official documentation](https://archlinuxarm.org/platforms) instead.
-
-Look at that list first, and only proceed with this guide if your device is not there.
-
-Also this guide doesn't cover duel-boots.
-
-And finally, you should have an ARM v8 (aka. `aarch64`, aka. `arm64`) processor.
-This guide will not cover older/32 bit ARM CPU's.
+This might work or might not. It will only work on UEFI systems and I have only tested this on a VM, be cautious if you are doing it on real hardware. Also, if you are using something like the raspberry pi, you should use the [official documentation](https://archlinuxarm.org/platforms) instead. Check the list, and only proceed with this guide if your device is not there.
+This guide doesn't cover dual-boots. Finally, you should have an ARM v8 (aka. `aarch64`, aka. `arm64`) processor, this guide does not cover older/32 bit ARM CPU's.
 
 ## Preparations
 
-You will need to use another distro to actually do the installation.
-I used Fedora, but any distro should in theory work.
-
-and, for the rest of this guide (unless explicitly stated), it is assumed you will be root.
+You will need to use another distro to actually do the installation. I used Fedora, but any distro should in theory work.
+For the rest of this guide (unless explicitly stated), it is assumed you will be root.
 So, switch over to root:
 
 ```sh
@@ -54,10 +27,7 @@ sudo -s
 
 ## Partitioning the disks
 
-This part generally assumes you already know how to partition disks, and it doesn't matter how you do it.
-I'll use fdisk, but it really doesn't matter.
-
-First, list out your drives with:
+This part generally assumes you already know how to partition disks, and it doesn't matter how you do it. I'll use fdisk, but it really doesn't matter. First, list out your drives with:
 
 ```sh
 fdisk -l
@@ -159,15 +129,11 @@ which will unpack it into our partitions.
 ## Making the fstab
 
 Let's now generate the fstab, this file tells the operating system what partitions to mount at boot.
-
 You can either make it yourself, or, you can use `genfstab`.
 Making it ourselves is the easier option, so we will do that.
-
 First, get your partition UUID's by running `blkid`. These will also be important later on.
 
-Then, edit the fstab.
-
-Replace the UUID's accordingly, with the first UUID being the one of the first partition,
+Then, edit the fstab by replacing the UUID's accordingly, with the first UUID being the one of the first partition,
 and the second UUID being the UUID of the second partition.
 
 ```sh
@@ -181,10 +147,8 @@ EOF
 
 Because we are unable to set up **proper** boot functionality without being actually booted into the OS,
 we have to use a startup.nsh script.
-
 This is the UEFI's last resort if there is absolutely nothing else available to boot.
-
-Replace the UUID with the UUID of the **root** partition, not the boot one. This is critical.
+Replace the UUID with the UUID of the **root** partition, not the boot one.
 
 ```sh
 cat > /mnt/arch/boot/startup.nsh << "EOF"
@@ -219,7 +183,6 @@ With any luck, you should be booted into your brand new system! But you're not d
 ## Networking
 
 As far as I know, Archlinux ARM only comes with tools for ethernet.
-
 If you use ethernet it should work out of the box, if you use wifi, you would have to figure out how to chroot into the new install.
 
 Instructions for chrooting into an Arch install without `arch-chroot` can be found [on the Arch wiki](https://wiki.archlinux.org/title/chroot#Using_chroot). From there you just have to install a wireless manager and whatever else you might need.
@@ -398,9 +361,8 @@ You can now reboot the system, and login as the user you created.
 
 ## What next?
 
-You can try installing a graphical enviornment (which may be very challenging), or installing other tools.
-
-You may also want to install sudo to install packages and so on.
+You can try installing a graphical environment (which may be very challenging), or installing other tools.
+You may also want to install sudo and some other convenient packages. Maybe try to get graphics working?
 
 ## Credits
 

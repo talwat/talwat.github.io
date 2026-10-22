@@ -1,22 +1,26 @@
 <script setup lang="ts">
-const { id } = defineProps<{ id: string }>();
+import type { Item } from "~~/shared/types";
 
+const { item } = defineProps<{ item: Item }>();
 const { data, error } = await useFetch<{ pages: string[] }>(
-  `/api/documents/typst/${id}?format=svg&transparent=true`,
+  `/api/documents/typst/${item.id}?format=svg&transparent=true`,
 );
 
 if (error.value) throw error.value;
 </script>
 
 <template>
-  <div id="pages">
-    <img
-      id="page"
-      v-for="(page, index) in data?.pages"
-      :key="index"
-      :src="page"
-    />
-  </div>
+  <main>
+    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+    <div id="pages">
+      <img
+        id="page"
+        v-for="(page, index) in data?.pages"
+        :key="index"
+        :src="page"
+      />
+    </div>
+  </main>
 </template>
 
 <style lang="css" scoped>

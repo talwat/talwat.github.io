@@ -19,18 +19,9 @@ if (!item)
 </script>
 
 <template>
-  <main>
-    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
-    <template v-if="item.type == 'typst'">
-      <EmbedTypst v-if="item.meta.embed" :id />
-      <Typst v-else :id />
-    </template>
-    <Markdown v-else :id />
-  </main>
+  <template v-if="item.type == 'typst'">
+    <EmbedTypst v-if="item.meta.embed" :item />
+    <Typst v-else :item />
+  </template>
+  <Markdown v-else :item />
 </template>
-
-<style lang="css" scoped>
-main {
-  margin-top: 0;
-}
-</style>

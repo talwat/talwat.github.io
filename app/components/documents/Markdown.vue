@@ -3,20 +3,32 @@ import "~/assets/markdown.css";
 import rangi from "@comark/vue/plugins/rangi";
 import { catppuccin } from "rangi/themes";
 import { Markdown } from "@comark/vue";
-import type { Metadata } from "~~/shared/types";
+import type { Item, Metadata } from "~~/shared/types";
 
-const { id } = defineProps<{ id: string }>();
+const { item } = defineProps<{ item: Item }>();
 const { data, error } = await useFetch<{ content: string; meta: Metadata }>(
-  `/api/documents/markdown/${id}`,
+  `/api/documents/markdown/${item.id}`,
 );
 
 if (error.value) throw error.value;
 </script>
 
 <template>
-  <Suspense>
-    <Markdown :plugins="[rangi({ theme: catppuccin, lineNumbers: true })]">{{
-      data?.content
-    }}</Markdown>
-  </Suspense>
+  <main>
+    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+    <Suspense>
+      <Markdown :plugins="[rangi({ theme: catppuccin, lineNumbers: true })]">{{
+        data?.content
+      }}</Markdown>
+    </Suspense>
+  </main>
 </template>
+
+<style lang="css" scoped>
+main {
+  margin-left: 8rem;
+  margin-right: 8rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+</style>

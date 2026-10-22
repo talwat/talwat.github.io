@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import VuePdfEmbed from "vue-pdf-embed";
-import type { Metadata } from "~~/shared/types";
+import type { Item } from "~~/shared/types";
 
-const { id } = defineProps<{ id: string }>();
-const { data, error } = await useFetch<{ pages: string[]; meta: Metadata }>(
-  `/api/documents/typst/${id}?format=pdf`,
+const { item } = defineProps<{ item: Item }>();
+const { data, error } = await useFetch<{ pages: string[] }>(
+  `/api/documents/typst/${item.id}?format=pdf`,
 );
 if (error.value) throw error.value;
 
@@ -19,20 +19,23 @@ function resize(amount: number) {
 </script>
 
 <template>
-  <div id="container">
-    <div id="toolbar">
-      <button @click="resize(-10)" :disabled="scale <= 30">
-        <Icon name="mdi:minus" />
-      </button>
-      <span>{{ scale }}%</span>
-      <button @click="resize(10)" :disabled="scale >= 100">
-        <Icon name="mdi:plus" />
-      </button>
+  <main>
+    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+    <div id="container">
+      <div id="toolbar">
+        <button @click="resize(-10)" :disabled="scale <= 30">
+          <Icon name="mdi:minus" />
+        </button>
+        <span>{{ scale }}%</span>
+        <button @click="resize(10)" :disabled="scale >= 100">
+          <Icon name="mdi:plus" />
+        </button>
+      </div>
+      <ClientOnly>
+        <VuePdfEmbed v-if="pages[0]" :source="pages[0]" :width="1000" />
+      </ClientOnly>
     </div>
-    <ClientOnly>
-      <VuePdfEmbed v-if="pages[0]" :source="pages[0]" :width="1000" />
-    </ClientOnly>
-  </div>
+  </main>
 </template>
 
 <style lang="css" scoped>
@@ -71,8 +74,7 @@ function resize(amount: number) {
 }
 
 :global(.vue-pdf-embed) {
-  padding: 1rem;
-  padding-top: 0.5rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

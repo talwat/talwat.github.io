@@ -1,7 +1,7 @@
 import { execFile } from "child_process";
 import { promises as fs } from "fs";
 import { basename, dirname, resolve } from "path";
-import { exists, contents, getMeta } from "~~/server/utils";
+import { exists, contents } from "~~/server/utils";
 import { promisify } from "util";
 
 const sourceDir = resolve(process.cwd(), "documents/typst/");
@@ -61,6 +61,5 @@ export default defineEventHandler(async (event) => {
 
   return {
     pages,
-    meta: await getMeta(workDir, "typst"),
   };
 });
