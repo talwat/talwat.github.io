@@ -1,5 +1,3 @@
-import { promises as fs } from "fs";
-import { resolve } from "path";
 import { contents } from "../utils";
 
 const ORDER = [

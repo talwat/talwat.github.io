@@ -35,9 +35,10 @@ useSeoMeta({
           <template #fallback>
             <NuxtLink
               :to="`/photography/${collection.id}/`"
-              :style="{ height: '100%' }"
+              class="fallback-link"
             >
               <img
+                class="fallback-img"
                 :src="`/images/photography/${collection.name}/${collection.files[0]}`"
               />
             </NuxtLink>
@@ -54,6 +55,7 @@ useSeoMeta({
           >
             <SplideSlide v-for="(file, i) in collection.files">
               <img
+                class="slide-img"
                 :alt="`image ${i} of ${collection.name}`"
                 :data-splide-lazy="`/images/photography/${collection.name}/${file}`"
               />
@@ -76,10 +78,21 @@ a {
   margin-bottom: 1rem;
 }
 
-img {
+.slide-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.fallback-link {
+  height: 100%;
+}
+
+.fallback-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  display: block;
 }
 
 .collection {
