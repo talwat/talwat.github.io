@@ -29,7 +29,7 @@
           </p>
         </noscript>
       </section>
-      <section id="graphic">
+      <section class="graphic">
         <IsoCylinder
           :height="200"
           :radius="70"
@@ -56,11 +56,21 @@ main {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  column-gap: 2rem;
+  row-gap: 1rem;
 }
 
 #links a {
   font-size: 1.2rem;
+  border: 2px solid var(--bg-1);
+  padding: 1rem;
+  flex: 1 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#links a:hover {
+  background-color: var(--bg-1);
 }
 
 #top {
@@ -69,12 +79,6 @@ main {
   padding: 4rem;
   padding-top: 2rem;
   padding-bottom: 0rem;
-}
-
-@media (max-width: 900px) {
-  #graphic {
-    display: none !important;
-  }
 }
 
 @media (max-width: 600px) {
@@ -101,36 +105,5 @@ main {
 
 #about {
   width: 50%;
-}
-
-#graphic {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#graphic > * {
-  position: relative;
-  z-index: 1;
-}
-
-#graphic::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
-  /* isometric (triangular) grid: three line sets at 30°, 90°, 150° */
-  --line: color-mix(in srgb, var(--fg-1) 12%, transparent);
-  background-image:
-    repeating-linear-gradient(30deg, var(--line) 0 1px, transparent 1px 36px),
-    repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 36px),
-    repeating-linear-gradient(150deg, var(--line) 0 1px, transparent 1px 36px);
-
-  /* fade the edges so it dissolves into the page */
-  -webkit-mask-image: radial-gradient(closest-side, #000 75%, transparent 100%);
-  mask-image: radial-gradient(closest-side, #000 75%, transparent 100%);
 }
 </style>

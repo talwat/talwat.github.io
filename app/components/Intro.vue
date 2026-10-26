@@ -40,14 +40,11 @@ p {
   align-items: center;
 }
 
-#name * {
-  margin: 0;
-}
-
 h1 {
   padding: 0;
   border: 0;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0;
+  margin-top: -0.4rem;
   font-size: 5rem;
   color: var(--blue);
   text-align: center;
@@ -66,7 +63,8 @@ h1 {
 
 #name-he {
   opacity: 0;
-  font-size: 4.2rem;
+  font-size: 4.8rem;
+  font-family: "Noto Sans", sans-serif;
 }
 
 #name-en {

@@ -169,4 +169,8 @@ a {
 #right {
   justify-content: end;
 }
+
+:global(.router-link-active) {
+  font-weight: bold;
+}
 </style>

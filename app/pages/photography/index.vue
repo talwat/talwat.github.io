@@ -17,13 +17,26 @@ useSeoMeta({
 
 <template>
   <main id="photography">
-    <section>
-      <h1 class="title">Photography</h1>
-      <p>
-        Here is a collection of photos I've taken with either a Nikon D5500, or
-        a Fujifilm X-T3. I'm certainly a beginner, but I try my best.
-      </p>
-    </section>
+    <h1 class="title">Photography</h1>
+    <div id="top">
+      <section id="about">
+        <h2 id="about-title">About</h2>
+        <p id="about-text">
+          Here is a collection of photos I've taken with either a Nikon D5500,
+          or a Fujifilm X-T3. I'm certainly a beginner, but I try my best. I
+          generally do landscape photography, although I have tried to
+          experiment with street photography and am interested in trying macro
+          photography when I can get a macro lens.
+        </p>
+      </section>
+      <section class="graphic">
+        <IsoCamera
+          id="camera"
+          :scale="0.8"
+          back-color="color-mix(in srgb, var(--accent) 50%, transparent)"
+        />
+      </section>
+    </div>
     <div id="collections">
       <section class="collection" v-for="collection in collections">
         <h2>
@@ -68,6 +81,33 @@ useSeoMeta({
 </template>
 
 <style scoped>
+#camera {
+  margin-bottom: 2.25rem;
+}
+
+#top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+#top > * {
+  flex: 1 1;
+}
+
+#about-title {
+  margin-bottom: -0.8rem;
+  font-size: 1.8rem;
+}
+
+#about-text {
+  font-size: 1.2rem;
+}
+
 a {
   color: var(--fg);
 }
@@ -129,10 +169,10 @@ a {
     border-top: 1px solid var(--bg-1);
   }
 
-  /* .collection:not(:last-child) {   
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--bg-1);
-  } */
+  #top {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 </style>
 
