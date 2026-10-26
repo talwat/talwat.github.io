@@ -19,7 +19,7 @@ pre {
   word-wrap: break-word;
   max-width: min-content;
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   counter-reset: line;
   box-sizing: border-box;
 }
