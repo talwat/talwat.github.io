@@ -53,9 +53,7 @@ main {
 
 #links {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: row;
   column-gap: 2rem;
   row-gap: 1rem;
 }
@@ -81,12 +79,6 @@ main {
   padding-bottom: 0rem;
 }
 
-@media (max-width: 600px) {
-  #top {
-    padding: 0;
-  }
-}
-
 #top > * {
   flex: 1 1;
 }
@@ -105,5 +97,21 @@ main {
 
 #about {
   width: 50%;
+}
+
+@media (max-width: 600px) {
+  #top {
+    padding: 0;
+  }
+
+  #about h2 {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  #links {
+    flex-direction: column;
+  }
 }
 </style>
