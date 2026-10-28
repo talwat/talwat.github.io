@@ -1,9 +1,5 @@
 #import "@preview/mannot:0.4.0": markrect, annot, mark
 
-#set text(
-  size: 16pt
-)
-
 #set heading(numbering: "1.")
 #outline()
 
@@ -60,7 +56,7 @@ As seen in @displacement-graph, the naive model for displacement seems nearly id
 #let ds = $dif s$
 #let dt = $dif t$
 #let du = $dif u$
-#let tv = $v_T$
+#let tv = $v_t$
 
 $
 F = m g - k v^2 \
@@ -129,7 +125,7 @@ tv/2ln ((tv + v)/(tv - v)) = g t \
 ln ((tv + v)/(tv - v)) = (2 g t)/tv \
 ln ((tv + v)/(tv - v)) = (2 g t)/tv \
 
-#let egt = $e^frac(2 g t, tv, style: "vertical")$
+#let egt = $e^(script(2 g t)/script(tv))$ 
 
 (tv + v)/(tv - v) = egt \
 tv + v = tv egt - v egt \
@@ -151,6 +147,9 @@ s = tv integral (egt - 1)/(egt + 1) dt \
 s = tv integral (egt + 1 - 2)/(egt + 1) dt \
 s = tv (integral 1 dt - integral 2/(egt + 1) dt) \
 s = tv t -tv integral 2/(egt + 1) dt \
+$
+#pagebreak()
+$
 mline \
 u "substitution" \
 mline \
@@ -195,7 +194,7 @@ s = tv t
   -tv^cancel(2)/cancel(g)
   dot
   2 t cancel(g / tv)
-+tv^2/g (legt - ln 2)) \
++tv^2/g (legt - ln 2) \
 s = (tv t -2tv t) + tv^2/g legtw\
 key(s(t) = tv^2/g legtw - tv t)\
 $
