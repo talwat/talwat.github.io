@@ -6,7 +6,7 @@ import NoScript from "~/components/NoScript.vue";
 <template>
   <Intro />
   <main>
-    <div id="top">
+    <div id="container">
       <section id="about">
         <h2>About</h2>
         <p>
@@ -47,9 +47,14 @@ import NoScript from "~/components/NoScript.vue";
 
 <style lang="css" scoped>
 main {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  flex: 1 1;
+  padding-top: 3.5rem;
+  padding-left: 5.5rem;
+  padding-right: 5.5rem;
 }
 
 #links {
@@ -72,16 +77,16 @@ main {
   background-color: var(--bg-1);
 }
 
-#top {
+#container {
   display: flex;
   flex-direction: row;
-  padding: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 0rem;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
-#top > * {
+#container > * {
   flex: 1 1;
+  max-width: 40rem;
 }
 
 #about h2 {
@@ -101,12 +106,12 @@ main {
 }
 
 @media (max-width: 600px) {
-  #top {
-    padding: 0;
-  }
-
   #about h2 {
     margin-top: 0;
+  }
+
+  main {
+    padding: 1.5rem;
   }
 }
 

@@ -41,5 +41,15 @@ useHead({
 
 <template>
   <Header />
-  <NuxtPage />
+  <div id="container">
+    <NuxtPage />
+  </div>
 </template>
+
+<style lang="css" scoped>
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

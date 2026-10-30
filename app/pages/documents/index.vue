@@ -31,7 +31,7 @@ const categories: Category[] = [
 ];
 </script>
 <template>
-  <main class="wide-margin-main">
+  <main>
     <h1 class="title">Documents & Archive</h1>
     <p>
       Eventually there will be more here, but for now, this is what there is.
@@ -51,6 +51,10 @@ const categories: Category[] = [
 </template>
 
 <style lang="css" scoped>
+main {
+  width: 60rem;
+}
+
 .description {
   color: var(--fg-1);
   margin-top: 0.4rem;

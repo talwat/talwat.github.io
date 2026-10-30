@@ -97,25 +97,27 @@ useSeoMeta({
 
 <style scoped>
 #camera {
-  margin-bottom: 2.25rem;
+  margin-top: calc(-2.25rem + 0.5rem);
 }
 
 #top {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-top: 1rem;
+  justify-content: space-between;
 }
 
 #top > * {
+  padding: 1rem;
   flex: 1 1;
 }
 
 #about-title {
-  margin-bottom: -0.8rem;
-  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+#about-text {
+  margin: 0;
 }
 
 p {

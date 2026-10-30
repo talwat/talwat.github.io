@@ -14,12 +14,10 @@ if (error.value) throw error.value;
 </script>
 
 <template>
-  <main class="wide-margin-main">
-    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
-    <Suspense>
-      <Markdown :plugins="[rangi({ theme: catppuccin, lineNumbers: true })]">{{
-        data?.content
-      }}</Markdown>
-    </Suspense>
-  </main>
+  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <Suspense>
+    <Markdown :plugins="[rangi({ theme: catppuccin, lineNumbers: true })]">{{
+      data?.content
+    }}</Markdown>
+  </Suspense>
 </template>

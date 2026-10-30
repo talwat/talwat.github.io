@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import "@/assets/pattern.css";
 </script>
+
 <template>
-  <section class="pattern">
+  <section id="intro" class="pattern">
     <div id="name">
       <p>Hey, I'm</p>
-      <h1>
+      <h1 id="name-header">
         <span id="name-en">tal</span>
         <span id="name-he">טל</span>
       </h1>
@@ -40,7 +41,7 @@ p {
   align-items: center;
 }
 
-h1 {
+#name-header {
   padding: 0;
   border: 0;
   margin-bottom: 0;
@@ -84,7 +85,9 @@ h1 {
   font-style: italic;
 }
 
-section {
+#intro {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;

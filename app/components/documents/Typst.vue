@@ -19,23 +19,21 @@ function resize(amount: number) {
 </script>
 
 <template>
-  <main>
-    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
-    <div id="container">
-      <div id="toolbar">
-        <button @click="resize(-10)" :disabled="scale <= 30">
-          <Icon name="mdi:minus" />
-        </button>
-        <span>{{ scale }}%</span>
-        <button @click="resize(10)" :disabled="scale >= 100">
-          <Icon name="mdi:plus" />
-        </button>
-      </div>
-      <ClientOnly>
-        <VuePdfEmbed v-if="pages[0]" :source="pages[0]" :width="1000" />
-      </ClientOnly>
+  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <div id="container">
+    <div id="toolbar">
+      <button @click="resize(-10)" :disabled="scale <= 30">
+        <Icon name="mdi:minus" />
+      </button>
+      <span>{{ scale }}%</span>
+      <button @click="resize(10)" :disabled="scale >= 100">
+        <Icon name="mdi:plus" />
+      </button>
     </div>
-  </main>
+    <ClientOnly>
+      <VuePdfEmbed v-if="pages[0]" :source="pages[0]" :width="1920" />
+    </ClientOnly>
+  </div>
 </template>
 
 <style lang="css" scoped>

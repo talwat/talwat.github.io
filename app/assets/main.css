@@ -64,19 +64,10 @@ body {
 }
 
 main {
-  margin: 1.5rem;
-}
-
-.wide-margin-main {
-  margin-left: 8rem;
-  margin-right: 8rem;
-}
-
-@media (max-width: 800px) {
-  .wide-margin-main {
-    margin-right: 2rem;
-    margin-left: 2rem;
-  }
+  padding: 1.5rem;
+  width: 96rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 a {
@@ -96,7 +87,7 @@ img:not([src]) {
   text-align: center;
   padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--bg-1);
-  margin-top: 1.5rem;
+  margin-top: 0;
   margin-bottom: 1rem;
   font-size: 2rem;
 }

@@ -10,17 +10,15 @@ if (error.value) throw error.value;
 </script>
 
 <template>
-  <main>
-    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
-    <div id="pages">
-      <img
-        id="page"
-        v-for="(page, index) in data?.pages"
-        :key="index"
-        :src="page"
-      />
-    </div>
-  </main>
+  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <div id="pages">
+    <img
+      id="page"
+      v-for="(page, index) in data?.pages"
+      :key="index"
+      :src="page"
+    />
+  </div>
 </template>
 
 <style lang="css" scoped>

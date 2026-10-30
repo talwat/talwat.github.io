@@ -28,9 +28,28 @@ if (!item)
 </script>
 
 <template>
-  <template v-if="item.type == 'typst'">
+  <main v-if="item.type == 'typst'" id="typst">
     <EmbedTypst v-if="item.meta.embed" :item />
     <Typst v-else :item />
-  </template>
-  <Markdown v-else :item />
+  </main>
+  <main v-else id="markdown">
+    <Markdown :item />
+  </main>
 </template>
+
+<style lang="css" scoped>
+#typst {
+  width: 100%;
+}
+
+#markdown {
+  width: 86rem;
+}
+
+@media (min-width: 800px) {
+  #markdown {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+</style>
