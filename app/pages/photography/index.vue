@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import IsoCamera from "~/components/graphics/IsoCamera.vue";
+import NoScript from "~/components/NoScript.vue";
+
 // @ts-ignore
 import "@splidejs/vue-splide/css";
 
@@ -28,21 +31,22 @@ useSeoMeta({
           experiment with street photography and am interested in trying macro
           photography when I can get a macro lens.
         </p>
+        <NoScript>
+          <p>No JS? Click to see each collection.</p>
+        </NoScript>
       </section>
       <section class="graphic">
-        <IsoCamera
-          id="camera"
-          :scale="0.8"
-          back-color="color-mix(in srgb, var(--accent) 50%, transparent)"
-        />
+        <IsoCamera id="camera" :scale="0.8" :start-angle="45" />
       </section>
     </div>
     <div id="collections">
       <section class="collection" v-for="collection in collections">
         <h2>
-          <NuxtLink :to="`/photography/${collection.id}/`">{{
-            collection.name
-          }}</NuxtLink>
+          <NuxtLink
+            title="See expanded grid view"
+            :to="`/photography/${collection.id}/`"
+            >{{ collection.name }}</NuxtLink
+          >
         </h2>
         <ClientOnly>
           <template #fallback>
@@ -52,7 +56,7 @@ useSeoMeta({
             >
               <img
                 class="fallback-img"
-                :src="`/images/photography/${collection.name}/${collection.files[0]}`"
+                :src="`/images/photography/${collection.id}/${collection.cover ?? collection.files[0]}`"
               />
             </NuxtLink>
           </template>
@@ -66,11 +70,22 @@ useSeoMeta({
             }"
             :aria-label="`image carousel for ${collection.name}`"
           >
-            <SplideSlide v-for="(file, i) in collection.files">
+            <SplideSlide v-if="collection.cover">
+              <img
+                class="slide-img"
+                :alt="`cover of ${collection.name}`"
+                :data-splide-lazy="`/images/photography/${collection.id}/${collection.cover}`"
+              />
+            </SplideSlide>
+            <SplideSlide
+              v-for="(file, i) in collection.files.filter(
+                (x) => x != collection.cover,
+              )"
+            >
               <img
                 class="slide-img"
                 :alt="`image ${i} of ${collection.name}`"
-                :data-splide-lazy="`/images/photography/${collection.name}/${file}`"
+                :data-splide-lazy="`/images/photography/${collection.id}/${file}`"
               />
             </SplideSlide>
           </Splide>
@@ -91,7 +106,6 @@ useSeoMeta({
   align-items: center;
   margin-left: 2rem;
   margin-right: 2rem;
-  margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
@@ -104,7 +118,7 @@ useSeoMeta({
   font-size: 1.8rem;
 }
 
-#about-text {
+p {
   font-size: 1.2rem;
 }
 
@@ -139,8 +153,6 @@ a {
   border: 2px solid var(--bg-1);
   padding: 1rem;
   margin: 0;
-  display: flex;
-  flex-direction: column;
   min-width: 0;
 }
 

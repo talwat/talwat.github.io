@@ -170,7 +170,7 @@ a {
   justify-content: end;
 }
 
-:global(.router-link-active) {
+:global(.router-link-active.page-link) {
   font-weight: bold;
 }
 </style>

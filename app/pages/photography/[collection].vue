@@ -17,7 +17,7 @@ if (!collection) {
 }
 
 const title = `Photography | ${collection.name}`;
-const description = `A small collection of photos from ${collection.name}.`;
+const description = `A collection of photos from ${collection.name}.\n\n${collection.description}`;
 useSeoMeta({
   title: title,
   ogTitle: title,
@@ -28,11 +28,12 @@ useSeoMeta({
 <template>
   <main>
     <h1 class="title">{{ collection.name }}</h1>
+    <p id="description">{{ collection.description }}</p>
     <div id="images">
       <img
         v-for="(file, i) in collection.files"
         :alt="`image ${i} of ${collection.name}`"
-        :src="`/images/photography/${collection.name}/${file}`"
+        :src="`/images/photography/${collection.id}/${file}`"
         loading="lazy"
       />
     </div>
@@ -43,6 +44,11 @@ useSeoMeta({
 #images {
   columns: 3 512px;
   gap: 0.5rem;
+}
+
+#description {
+  text-align: center;
+  color: var(--fg-1);
 }
 
 img {

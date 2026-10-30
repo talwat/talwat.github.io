@@ -1,5 +1,6 @@
 import { contents, exists } from "~~/server/utils";
 import path from "path";
+import yaml from "yaml";
 import { Dirent } from "fs";
 import { promises as fs } from "fs";
 import { DocumentType, Item, Metadata } from "~~/shared/types";
@@ -13,8 +14,8 @@ async function getMeta(input: string, type: DocumentType): Promise<Metadata> {
   }
 
   try {
-    const data = await fs.readFile(path.resolve(input, "meta.json"), "utf-8");
-    return JSON.parse(data) as Metadata;
+    const data = await fs.readFile(path.resolve(input, "meta.yaml"), "utf-8");
+    return yaml.parse(data) as Metadata;
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code !== "ENOENT") throw err;
     return {};

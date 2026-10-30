@@ -1,4 +1,7 @@
 import { contents } from "../utils";
+import fs from "fs/promises";
+import yaml from "yaml";
+import path from "path";
 
 const ORDER = [
   "barcelona",
@@ -14,29 +17,26 @@ const ORDER = [
 ];
 
 interface Collection {
-  name: string;
   id: string;
+  name: string;
+  description?: string;
+  cover?: string;
   files: string[];
-}
-
-export function toAscii(input: string): string {
-  return input
-    .toLowerCase()
-    .normalize("NFD")
-    .replaceAll(/[\u0300-\u036f]/g, "")
-    .replaceAll(/[^\x00-\x7F]/g, "")
-    .replaceAll(" ", "-");
 }
 
 export default defineEventHandler(async () => {
   const entries = await contents("public/images/photography", true);
   const collections = new Map<string, Collection>();
   for (const entry of entries) {
-    if (!entry.isFile()) continue;
+    if (!entry.isFile() || path.extname(entry.name) == ".yaml") continue;
 
-    const parent = entry.parentPath.split("/").at(-1)!;
+    const parent = path.basename(entry.parentPath);
     if (!collections.has(parent)) {
-      collections.set(parent, { name: parent, id: toAscii(parent), files: [] });
+      const buf = await fs.readFile(
+        path.resolve(entry.parentPath, "meta.yaml"),
+      );
+      const meta = yaml.parse(buf.toString());
+      collections.set(parent, { id: parent, files: [], ...meta });
     }
 
     const collection = collections.get(parent)!;

@@ -23,7 +23,8 @@
     "rangi": "^2.2.0",
     "vue": "^3.5.43",
     "vue-pdf-embed": "^2.1.7",
-    "vue-router": "^5.3.1"
+    "vue-router": "^5.3.1",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@iconify-json/devicon-plain": "^1.2.61",

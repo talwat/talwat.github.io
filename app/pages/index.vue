@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import IsoCylinder from "~/components/graphics/IsoCylinder.vue";
+import NoScript from "~/components/NoScript.vue";
+</script>
+
 <template>
   <Intro />
   <main>
@@ -18,16 +23,12 @@
           <NuxtLink to="/photography">My Photography</NuxtLink>
           <NuxtLink to="/programming">My Programming</NuxtLink>
         </div>
-        <noscript>
-          <p
-            :style="{
-              color: 'var(--fg-1)',
-            }"
-          >
-            Looks like you aren't using Javascript. No worries, everything still
-            works. Enjoy! :)
+        <NoScript>
+          <p>
+            Looks like you aren't using Javascript.<br />
+            No worries, everything still works. Enjoy! :)
           </p>
-        </noscript>
+        </NoScript>
       </section>
       <section class="graphic">
         <IsoCylinder
