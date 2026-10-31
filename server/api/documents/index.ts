@@ -36,7 +36,7 @@ const isValidEntry = async (type: DocumentType, entry: Dirent<string>) =>
 export default defineEventHandler(async () => {
   const lists: Item[] = [];
 
-  const entries = await contents("documents", true);
+  const entries = await contents("media/documents", true);
   for (const entry of entries) {
     const full = path.join(entry.parentPath, entry.name);
     const [type, ...rest] = path.relative(documentsDir, full).split(path.sep);
