@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@comark/vue": "^0.8.1",
+    "@myriaddreamin/typst-ts-node-compiler": "npm:@wybxc/typst-ts-node-compiler@0.7.1",
     "@nuxt/fonts": "0.14.0",
     "@nuxt/icon": "2.5.1",
     "@nuxtjs/color-mode": "4.0.1",
@@ -19,7 +20,7 @@
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@splidejs/vue-splide": "^0.6.12",
     "comark": "^0.8.1",
-    "nuxt": "^4.6.0",
+    "nuxt": "^4.6.3",
     "rangi": "^2.2.0",
     "vue": "^3.5.43",
     "vue-pdf-embed": "^2.1.7",

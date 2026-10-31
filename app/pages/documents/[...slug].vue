@@ -10,7 +10,7 @@ if (typeof slug != "string") slug = slug.join("/");
 
 const id = slug.replace(/\/+$/, "");
 
-const list = (await useFetch<Item[]>("/api/documents/list")).data.value ?? [];
+const list = (await useFetch<Item[]>("/api/documents")).data.value ?? [];
 const item = list.find((x) => x.id == id);
 
 useSeoMeta({

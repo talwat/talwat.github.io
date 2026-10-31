@@ -1,3 +1,7 @@
+math {
+  font-family: "STIX Two Math";
+}
+
 code {
   font-size: 1rem;
   background-color: var(--code);
@@ -9,19 +13,24 @@ code {
 pre > code {
   padding: 0;
   background: none;
-  display: block;
 }
 
 pre {
   background-color: var(--code);
   padding: 1rem;
   padding-left: 0.5rem;
+  padding-right: 2.5rem;
   word-wrap: break-word;
   max-width: min-content;
   width: 100%;
   overflow-x: scroll;
   counter-reset: line;
   box-sizing: border-box;
+  font-weight: 400;
+}
+
+.katex-html {
+  display: none;
 }
 
 pre > code > .line {

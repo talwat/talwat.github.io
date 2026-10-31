@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   ],
   fonts: {
     defaults: {
-      weights: [400],
+      weights: [300, 400, 500, 600],
       styles: ["normal", "italic"],
       preload: true,
     },
@@ -25,6 +25,9 @@ export default defineNuxtConfig({
     url: "talwat.com",
     name: "talwat's website",
     trailingSlash: true,
+  },
+  routeRules: {
+    "/documents/**": { prerender: true },
   },
   sitemap: {
     xsl: false,

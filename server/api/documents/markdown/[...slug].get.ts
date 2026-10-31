@@ -12,7 +12,5 @@ export default defineEventHandler(async (event) => {
   const input = resolve(sourceDir, `${id}.md`);
   await exists(input, true);
 
-  return {
-    content: (await fs.readFile(input)).toString(),
-  };
+  return (await fs.readFile(input)).toString();
 });

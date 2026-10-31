@@ -9,7 +9,7 @@ useSeoMeta({
 import Entry from "~/components/documents/Entry.vue";
 import type { Item } from "~~/shared/types";
 
-const list = (await useFetch<Item[]>("/api/documents/list")).data.value ?? [];
+const list = (await useFetch<Item[]>("/api/documents")).data.value ?? [];
 
 interface Category {
   name: string;
@@ -27,6 +27,11 @@ const categories: Category[] = [
     name: "Blog Archive",
     description: "Two of my old blog posts. They're quite bad.",
     items: list.filter((x) => x.id.startsWith("archive/")),
+  },
+  {
+    name: "Technical Tests",
+    description: "Documents that just exist to test the rendering system",
+    items: list.filter((x) => x.id.startsWith("test/")),
   },
 ];
 </script>
