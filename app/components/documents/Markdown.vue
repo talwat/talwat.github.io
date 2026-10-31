@@ -16,8 +16,6 @@ if (error.value) throw error.value;
 </script>
 
 <template>
-  <div>
-    <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
-    <MarkdownDocument :components="{ 'typst-math': MathEmbed }" :value="data" />
-  </div>
+  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <MarkdownDocument :components="{ 'typst-math': MathEmbed }" :value="data" />
 </template>

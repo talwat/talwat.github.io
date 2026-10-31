@@ -65,7 +65,7 @@ useSeoMeta({
               rewind: true,
               lazyLoad: 'nearby',
               type: 'loop',
-              preloadPages: 2,
+              preloadPages: 1,
               arrows: collection.files.length > 1,
             }"
             :aria-label="`image carousel for ${collection.name}`"

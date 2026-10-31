@@ -33,7 +33,7 @@ if (!item)
     <EmbedTypst v-if="item.meta.embed" :item />
     <Typst v-else :item />
   </main>
-  <main v-else id="markdown">
+  <main v-else id="markdown" :class="{ serif: item.meta.serif }">
     <Markdown :item />
   </main>
 </template>
@@ -52,5 +52,11 @@ if (!item)
     padding-left: 8rem;
     padding-right: 8rem;
   }
+}
+
+#markdown.serif {
+  width: 48rem;
+  line-height: 1.5;
+  padding: 1.5rem;
 }
 </style>

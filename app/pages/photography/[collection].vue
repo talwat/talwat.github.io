@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const collections = (await useFetch("/api/photography")).data.value!;
 const route = useRoute();
 const error = createError({
   status: 404,
@@ -11,7 +10,8 @@ if (!route.params.collection) {
 }
 
 const param = route.params.collection.toString().toLowerCase();
-const collection = collections.find((x) => x.id == param);
+
+const collection = (await useFetch(`/api/photography/${param}`)).data.value;
 if (!collection) {
   throw error;
 }

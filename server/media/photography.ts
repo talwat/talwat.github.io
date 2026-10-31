@@ -24,26 +24,33 @@ interface Collection {
   files: string[];
 }
 
-export async function list() {
+export async function get(id: string): Promise<Collection> {
+  const dir = path.resolve("public/images/photography", id);
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+
+  const buf = await fs.readFile(path.resolve(dir, "meta.yaml"));
+  const meta = yaml.parse(buf.toString());
+
+  return {
+    id,
+    ...meta,
+    files: entries
+      .filter((entry) => entry.isFile() && path.extname(entry.name) !== ".yaml")
+      .map((entry) => entry.name),
+  };
+}
+
+export async function list(): Promise<Collection[]> {
   const entries = await contents("public/images/photography", true);
-  const collections = new Map<string, Collection>();
-  for (const entry of entries) {
-    if (!entry.isFile() || path.extname(entry.name) == ".yaml") continue;
+  const ids = new Set(
+    entries
+      .filter((entry) => entry.isFile())
+      .map((entry) => path.basename(entry.parentPath)),
+  );
 
-    const parent = path.basename(entry.parentPath);
-    if (!collections.has(parent)) {
-      const buf = await fs.readFile(
-        path.resolve(entry.parentPath, "meta.yaml"),
-      );
-      const meta = yaml.parse(buf.toString());
-      collections.set(parent, { id: parent, files: [], ...meta });
-    }
+  const collections = await Promise.all(Array.from(ids, (id) => get(id)));
 
-    const collection = collections.get(parent)!;
-    collection.files.push(entry.name);
-  }
-
-  return Array.from(collections.values()).sort((a, b) => {
+  return collections.sort((a, b) => {
     const ai = ORDER.indexOf(a.id);
     const bi = ORDER.indexOf(b.id);
 

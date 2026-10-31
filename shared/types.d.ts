@@ -5,6 +5,7 @@ interface DocumentMeta {
   description?: string;
   date?: Date;
   embed?: boolean;
+  serif?: boolean;
 }
 
 interface DocumentEntry {

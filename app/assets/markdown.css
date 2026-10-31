@@ -29,8 +29,39 @@ pre {
   font-weight: 400;
 }
 
-.katex-html {
-  display: none;
+#markdown img {
+  width: 100%;
+}
+
+body:has(#markdown.serif) {
+  font-family:
+    Libre Baskerville,
+    serif;
+  --fg: #222;
+  --bg: #fff;
+  --bg-1: #ddd;
+}
+
+body:has(#markdown.serif) {
+  nav {
+    box-shadow: none;
+    border-bottom: 1px solid var(--bg-1);
+  }
+
+  header .iconify {
+    display: none;
+  }
+}
+
+#markdown.serif h2 {
+  margin-bottom: -0.5rem;
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+
+#markdown.serif > .title {
+  font-size: 2.4rem;
+  border-color: var(--fg);
 }
 
 pre > code > .line {

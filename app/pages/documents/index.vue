@@ -25,6 +25,11 @@ const categories: Category[] = [
     items: list.filter((x) => x.type == "typst"),
   },
   {
+    name: "Articles",
+    description: "Old & New articles I wrote as part of my school newspaper.",
+    items: list.filter((x) => x.id.startsWith("article/")),
+  },
+  {
     name: "Old Blog Archive",
     description:
       "Two of my old blog posts. They're quite bad, and the rest are so abhorrent that I didn't bother archiving them.",

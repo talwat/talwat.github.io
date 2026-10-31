@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div id="copyright">
-      <Icon name="mdi:copyright" size="20px" />
+      <Icon id="copyright-icon" name="mdi:copyright" size="20px" />
       <span>{{ new Date().getFullYear() }} talwat</span>
     </div>
     <div>
@@ -24,7 +24,11 @@ footer {
 #copyright {
   display: flex;
   align-items: center;
-  gap: 0.9ch;
+  gap: 0.5ch;
+}
+
+#copyright-icon {
+  margin-bottom: 0.125ch;
 }
 
 #credit-link {

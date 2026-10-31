@@ -81,6 +81,8 @@ nav {
   align-items: center;
   z-index: 8;
   background-color: var(--bg);
+  height: 4rem;
+  box-sizing: border-box;
   padding: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
