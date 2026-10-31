@@ -1,6 +1,10 @@
 <template>
   <main>
     <h1 class="title">Credits</h1>
+    <p>
+      All content featured on this website was made by me unless specified
+      otherwise.
+    </p>
     <ul>
       <li>
         Font: <a href="https://github.com/tonsky/firacode">Fira Code</a> by
