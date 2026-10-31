@@ -42,6 +42,7 @@ main {
   flex-direction: column;
   gap: 0.4rem;
   height: 100vh;
+  width: 100%;
   margin: 0;
   align-items: center;
 }
