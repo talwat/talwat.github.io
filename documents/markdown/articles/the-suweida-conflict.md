@@ -1,7 +1,7 @@
 ---
 title: The Suweida Conflict
 date: "29/04/2026"
-description: "A commentary on the conflict in the Suweida province of Syria."
+description: "A commentary on the conflict in the Suweida region of Syria."
 serif: true
 ---
 

@@ -27,7 +27,7 @@ const categories: Category[] = [
   {
     name: "Articles",
     description: "Old & New articles I wrote as part of my school newspaper.",
-    items: list.filter((x) => x.id.startsWith("article/")),
+    items: list.filter((x) => x.id.startsWith("articles/")),
   },
   {
     name: "Old Blog Archive",
