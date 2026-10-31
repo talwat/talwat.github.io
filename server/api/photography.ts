@@ -1,4 +1,4 @@
-import { contents } from "../utils";
+import { contents } from "../utils/documents";
 import fs from "fs/promises";
 import yaml from "yaml";
 import path from "path";

@@ -3,7 +3,7 @@ useSeoMeta({
   title: "Miscellaneous",
   ogTitle: "Miscellaneous",
   description: "Miscellaneous documents and archive.",
-  ogDescription: "Miscellaneous documents and archive",
+  ogDescription: "Miscellaneous documents and archive.",
 });
 
 import Entry from "~/components/documents/Entry.vue";
@@ -30,7 +30,7 @@ const categories: Category[] = [
   },
   {
     name: "Technical Tests",
-    description: "Documents that just exist to test the rendering system",
+    description: "Documents that just exist to test the rendering system.",
     items: list.filter((x) => x.id.startsWith("test/")),
   },
 ];

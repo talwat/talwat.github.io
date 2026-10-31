@@ -26,9 +26,6 @@ export default defineNuxtConfig({
     name: "talwat's website",
     trailingSlash: true,
   },
-  routeRules: {
-    "/documents/**": { prerender: true },
-  },
   sitemap: {
     xsl: false,
     zeroRuntime: true,

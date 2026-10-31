@@ -3,13 +3,6 @@ import VuePdfEmbed from "vue-pdf-embed";
 import type { Item } from "~~/shared/types";
 
 const { item } = defineProps<{ item: Item }>();
-const { data, error } = await useFetch<{ pages: string[] }>(
-  `/api/documents/typst/${item.id}?format=pdf`,
-);
-if (error.value) throw error.value;
-
-const pages = data.value?.pages;
-if (!pages) throw createError({ status: 500 });
 
 const scale = ref(50);
 function resize(amount: number) {
@@ -31,7 +24,10 @@ function resize(amount: number) {
       </button>
     </div>
     <ClientOnly>
-      <VuePdfEmbed v-if="pages[0]" :source="pages[0]" :width="1920" />
+      <VuePdfEmbed
+        :source="`/api/documents/typst/${item.id}.pdf`"
+        :width="1920"
+      />
     </ClientOnly>
   </div>
 </template>

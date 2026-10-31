@@ -7,11 +7,15 @@ title: Math & Programming Test
 $$
   cal(L){f(t)} = integral_0^infinity e^(-s t) f(t) dif t
   = sum_(n=0)^infinity frac((-1)^n, n!) frac(d^n f, d s^n)
-  \
+$$
+
+$$
   nabla times (frac(1, mu_0) nabla times bold(A))
   + epsilon_0 frac(partial^2 bold(A), partial t^2)
   = bold(J) + epsilon_0 nabla (nabla dot bold(A))
-  \
+$$
+
+$$
   lim_(N -> infinity) sum_(k=1)^N frac((-1)^(k+1), k^s)
   product_(j=1)^k frac(Gamma(j+alpha), Gamma(j+beta))
   = frac(1, Gamma(s)) integral_0^infinity

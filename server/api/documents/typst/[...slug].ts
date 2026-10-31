@@ -1,70 +1,51 @@
-import { execFile } from "child_process";
 import { promises as fs } from "fs";
 import path from "path";
-import { exists, contents } from "~~/server/utils";
-import { promisify } from "util";
+
+import { NodeCompiler } from "@myriaddreamin/typst-ts-node-compiler";
+import { getID } from "~~/server/utils/documents";
 
 const sourceDir = path.resolve(process.cwd(), "documents/typst/");
-const publicDir = path.resolve(process.cwd(), "public/generated/documents/");
-const typst = process.env.TYPST_PATH ?? "typst";
 
-async function compile(input: string, output: string, transparent: boolean) {
-  let preamble = "";
-  if (transparent)
-    preamble = await fs.readFile(
-      path.resolve(sourceDir, "transparent.typ"),
-      "utf-8",
-    );
+interface Document {
+  mime: string;
+  content: Buffer | string;
+}
 
-  const source = await fs.readFile(input, "utf-8");
-  const temporary = path.resolve(
-    path.dirname(input),
-    `.tmp-${path.basename(input)}`,
+async function compile(workspace: string, embed: boolean): Promise<Document> {
+  const compiler = NodeCompiler.create({
+    workspace,
+  });
+
+  let preamble = await fs.readFile(
+    path.resolve(sourceDir, embed ? "embed.typ" : "paged.typ"),
+    "utf-8",
   );
 
-  try {
-    await fs.writeFile(temporary, `${preamble}\n${source}`);
-    await promisify(execFile)(typst, ["compile", temporary, output]);
-  } finally {
-    await fs.rm(temporary, { force: true });
-  }
+  const source = await fs.readFile(
+    path.resolve(workspace, "main.typ"),
+    "utf-8",
+  );
+
+  const mime = embed ? "image/svg+xml" : "application/pdf";
+  const input = `${preamble}\n${source}`;
+  const params = {
+    mainFileContent: input,
+  };
+
+  return {
+    mime,
+    content: embed ? compiler.svg(params) : compiler.pdf(params),
+  };
 }
 
 export default defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, "slug");
-  const { format, transparent } = getQuery<{
-    format: string;
-    transparent: boolean;
-  }>(event);
+  const { id, ext } = getID(event);
 
-  if (!slug)
-    throw createError({ status: 400, message: "Missing name URL parameter." });
-
-  const id = slug.replace(/\/+$/, "");
-  if (!format)
-    throw createError({
-      status: 400,
-      message: "Missing format query parameter.",
-    });
-
+  const embed = ext == ".svg";
   const workDir = path.resolve(sourceDir, id);
-  const input = path.resolve(workDir, "main.typ");
-  await exists(input, true);
 
-  const folder = `typst/${id}/${transparent ? "transparent" : "paged"}`;
-  const outdir = path.resolve(publicDir, folder);
-  await fs.mkdir(outdir, { recursive: true });
+  const { mime, content } = await compile(workDir, embed);
+  setResponseHeader(event, "Content-Type", mime);
 
-  let output = path.resolve(outdir, `${id}.${format}`);
-  if (format == "svg" || format == "png")
-    output = path.resolve(outdir, `{n}.${format}`);
-
-  await compile(input, output, transparent);
-  const pages = (await contents(outdir, false))
-    .map((x) => `/generated/documents/${folder}/${x.name}`)
-    .filter((x) => x.endsWith(`.${format}`));
-
-  return {
-    pages,
-  };
+  return content;
 });

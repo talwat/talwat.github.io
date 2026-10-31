@@ -2,19 +2,23 @@
 const props = defineProps<{ class?: string; content: string }>();
 const block = computed(() => props.class?.includes("block") ?? false);
 
-const { data: compiled, error } = await useAsyncData(
-  () => `math:${block.value ? "b" : "i"}:${props.content}`,
-  async () =>
-    (await import("./render")).render(props.content, block.value, "svg"),
+const { data: compiled, error } = await useFetch(
+  `/api/math/?mode=svg&block=${block.value}`,
+  {
+    method: "POST",
+    body: {
+      content: props.content,
+    },
+  },
 );
 </script>
 
 <template>
-  <div>
-    <code v-if="error" class="math-error">{{ content }}</code>
-    <span v-else-if="block" class="math-embed math-block" v-html="compiled" />
-    <span v-else class="math-embed math-inline" v-html="compiled" />
-  </div>
+  <code v-if="error" class="math-error">{{ content }}</code>
+  <span
+    :class="`math-embed ${block ? 'math-block' : 'math-inline'}`"
+    v-html="compiled"
+  />
 </template>
 
 <style lang="css">

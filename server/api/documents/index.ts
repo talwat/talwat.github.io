@@ -1,4 +1,4 @@
-import { contents, exists } from "~~/server/utils";
+import { contents, exists } from "~~/server/utils/documents";
 import path from "path";
 import yaml from "yaml";
 import { Dirent } from "fs";
