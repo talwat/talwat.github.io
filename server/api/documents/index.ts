@@ -22,7 +22,7 @@ async function getMeta(input: string, type: DocumentType): Promise<Metadata> {
   }
 }
 
-const documentsDir = path.resolve(process.cwd(), "media/documents");
+const documentsDir = path.resolve(process.cwd(), "documents");
 
 const isDocumentType = (value?: string): value is DocumentType =>
   value === "markdown" || value === "typst";
@@ -36,7 +36,7 @@ const isValidEntry = async (type: DocumentType, entry: Dirent<string>) =>
 export default defineEventHandler(async () => {
   const lists: Item[] = [];
 
-  const entries = await contents("media/documents", true);
+  const entries = await contents("documents", true);
   for (const entry of entries) {
     const full = path.join(entry.parentPath, entry.name);
     const [type, ...rest] = path.relative(documentsDir, full).split(path.sep);
