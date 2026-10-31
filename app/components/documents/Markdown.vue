@@ -13,7 +13,6 @@ const { data, error } = await useFetch<Parsed>(
 );
 
 if (error.value) throw error.value;
-prerenderRoutes(`/api/documents/markdown/${item.id}`);
 </script>
 
 <template>
