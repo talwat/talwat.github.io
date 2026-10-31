@@ -1,7 +1,7 @@
 ---
 title: "Gentoo on ARM"
 date: "3/2/2023"
-description: "The various hurdles of installing gentoo on an ARM computer."
+description: "Installing gentoo on an ARM computer."
 ---
 
 ## The context

@@ -23,10 +23,18 @@ const { data: compiled, error } = await useFetch(
 
 <style lang="css">
 .math-block {
-  display: flex;
-  justify-content: center;
+  display: block;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.math-block svg {
+  min-width: 100%;
 }
 
 .comark-content .math-embed svg * {

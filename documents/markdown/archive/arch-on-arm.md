@@ -1,7 +1,7 @@
 ---
 title: "Arch on (generic) ARM"
 date: "3/9/2023"
-description: "How to install generic Arch Linux ARM."
+description: "Installing Arch Linux ARM on a generic device."
 ---
 
 ## Why?

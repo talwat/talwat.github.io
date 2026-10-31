@@ -1,7 +1,3 @@
-math {
-  font-family: "STIX Two Math";
-}
-
 code {
   font-size: 1rem;
   background-color: var(--code);
@@ -23,7 +19,7 @@ pre {
   word-wrap: break-word;
   max-width: min-content;
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   counter-reset: line;
   box-sizing: border-box;
   font-weight: 400;
@@ -37,12 +33,15 @@ body:has(#markdown.serif) {
   font-family:
     Libre Baskerville,
     serif;
-  --fg: #222;
-  --bg: #fff;
-  --bg-1: #ddd;
 }
 
 body:has(#markdown.serif) {
+  & {
+    --bg: #fff;
+    --bg-1: #ddd;
+    --fg: #222;
+  }
+
   nav {
     box-shadow: none;
     border-bottom: 1px solid var(--bg-1);
@@ -54,7 +53,7 @@ body:has(#markdown.serif) {
 }
 
 #markdown.serif h2 {
-  margin-bottom: -0.5rem;
+  margin-bottom: -0.8rem;
   margin-top: 1rem;
   font-size: 1.8rem;
 }
@@ -78,6 +77,10 @@ pre > code > .line::before {
   user-select: none;
 }
 
+.light .shj span {
+  color: #4c4f69;
+}
+
 :root:not(.light) .shj span {
-  color: var(--shiki-dark) !important;
+  color: var(--shiki-dark, #cad3f5) !important;
 }
