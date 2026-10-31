@@ -7,7 +7,7 @@ import rangi from "@comark/vue/plugins/rangi";
 import math from "~~/server/utils/mathPlugin";
 import { catppuccin } from "rangi/themes";
 
-const sourceDir = path.resolve(process.cwd(), "documents/markdown/");
+const sourceDir = path.resolve(process.cwd(), "media/documents/markdown/");
 
 export default defineEventHandler(async (event) => {
   const { id, ext } = getID(event);

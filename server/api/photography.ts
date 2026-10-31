@@ -25,7 +25,7 @@ interface Collection {
 }
 
 export default defineEventHandler(async () => {
-  const entries = await contents("public/images/photography", true);
+  const entries = await contents("media/photography", true);
   const collections = new Map<string, Collection>();
   for (const entry of entries) {
     if (!entry.isFile() || path.extname(entry.name) == ".yaml") continue;

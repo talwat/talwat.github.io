@@ -22,7 +22,7 @@ async function getMeta(input: string, type: DocumentType): Promise<Metadata> {
   }
 }
 
-const documentsDir = path.resolve(process.cwd(), "documents");
+const documentsDir = path.resolve(process.cwd(), "media/documents");
 
 const isDocumentType = (value?: string): value is DocumentType =>
   value === "markdown" || value === "typst";

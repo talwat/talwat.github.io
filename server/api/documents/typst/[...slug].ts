@@ -4,7 +4,7 @@ import path from "path";
 import { NodeCompiler } from "@myriaddreamin/typst-ts-node-compiler";
 import { getID } from "~~/server/utils/documents";
 
-const sourceDir = path.resolve(process.cwd(), "documents/typst/");
+const sourceDir = path.resolve(process.cwd(), "media/documents/typst/");
 
 interface Document {
   mime: string;
