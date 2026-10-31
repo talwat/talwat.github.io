@@ -2,17 +2,18 @@
 import "~/assets/markdown.css";
 
 import { MarkdownDocument } from "@comark/vue";
-import type { Parsed } from "comark";
+import type { MarkdownDocument as Parsed } from "comark";
 
-import type { Item } from "~~/shared/types";
+import type { DocumentEntry } from "~~/shared/types";
 import MathEmbed from "./math/MathEmbed.vue";
 
-const { item } = defineProps<{ item: Item }>();
+const { item } = defineProps<{ item: DocumentEntry }>();
 const { data, error } = await useFetch<Parsed>(
   `/api/documents/markdown/${item.id}`,
 );
 
 if (error.value) throw error.value;
+prerenderRoutes(`/api/documents/markdown/${item.id}`);
 </script>
 
 <template>

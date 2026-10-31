@@ -1,10 +1,10 @@
 import { parseMarkdown } from "comark";
 import { promises as fs } from "fs";
 import path from "path";
-import { exists, getID } from "~~/server/utils/documents";
+import { exists, getID } from "~~/server/media/utils";
 
 import rangi from "@comark/vue/plugins/rangi";
-import math from "~~/server/utils/mathPlugin";
+import math from "~~/server/plugins/comarkMath";
 import { catppuccin } from "rangi/themes";
 
 const sourceDir = path.resolve(process.cwd(), "documents/markdown/");

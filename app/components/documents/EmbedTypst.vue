@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Item } from "~~/shared/types";
+import type { DocumentEntry } from "~~/shared/types";
 
-const { item } = defineProps<{ item: Item }>();
+const { item } = defineProps<{ item: DocumentEntry }>();
+prerenderRoutes(`/api/documents/typst/${item.id}.svg`);
 </script>
 
 <template>

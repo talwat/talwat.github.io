@@ -1,7 +1,7 @@
-import { contents } from "../utils/documents";
-import fs from "fs/promises";
-import yaml from "yaml";
 import path from "path";
+import yaml from "yaml";
+import fs from "fs/promises";
+import { contents } from "./utils";
 
 const ORDER = [
   "barcelona",
@@ -24,7 +24,7 @@ interface Collection {
   files: string[];
 }
 
-export default defineEventHandler(async () => {
+export async function list() {
   const entries = await contents("public/images/photography", true);
   const collections = new Map<string, Collection>();
   for (const entry of entries) {
@@ -43,7 +43,7 @@ export default defineEventHandler(async () => {
     collection.files.push(entry.name);
   }
 
-  const sorted = Array.from(collections.values()).sort((a, b) => {
+  return Array.from(collections.values()).sort((a, b) => {
     const ai = ORDER.indexOf(a.id);
     const bi = ORDER.indexOf(b.id);
 
@@ -52,6 +52,4 @@ export default defineEventHandler(async () => {
     if (bi === -1) return -1;
     return ai - bi;
   });
-
-  return sorted;
-});
+}

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Item } from "~~/shared/types";
+import type { DocumentEntry } from "~~/shared/types";
 
-const { item } = defineProps<{ item: Item }>();
+const { item } = defineProps<{ item: DocumentEntry }>();
 </script>
 <template>
   <div>

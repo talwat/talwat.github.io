@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 
 import { NodeCompiler } from "@myriaddreamin/typst-ts-node-compiler";
-import { getID } from "~~/server/utils/documents";
+import { getID } from "~~/server/media/utils";
 
 const sourceDir = path.resolve(process.cwd(), "documents/typst/");
 

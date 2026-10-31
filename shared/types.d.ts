@@ -1,14 +1,14 @@
 export type DocumentType = "typst" | "markdown";
 
-interface Metadata {
+interface DocumentMeta {
   title?: string;
   description?: string;
   date?: Date;
   embed?: boolean;
 }
 
-interface Item {
+interface DocumentEntry {
   id: string;
-  meta: Metadata;
+  meta: DocumentMeta;
   type: DocumentType;
 }

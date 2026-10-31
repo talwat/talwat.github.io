@@ -2,7 +2,7 @@
 import EmbedTypst from "~/components/documents/EmbedTypst.vue";
 import Markdown from "~/components/documents/Markdown.vue";
 import Typst from "~/components/documents/Typst.vue";
-import type { Item } from "~~/shared/types";
+import type { DocumentEntry } from "~~/shared/types";
 
 let slug = useRoute().params.slug;
 if (!slug) throw createError({ status: 400 });
@@ -10,7 +10,8 @@ if (typeof slug != "string") slug = slug.join("/");
 
 const id = slug.replace(/\/+$/, "");
 
-const list = (await useFetch<Item[]>("/api/documents")).data.value ?? [];
+const list =
+  (await useFetch<DocumentEntry[]>("/api/documents")).data.value ?? [];
 const item = list.find((x) => x.id == id);
 
 useSeoMeta({

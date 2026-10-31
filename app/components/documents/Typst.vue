@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import VuePdfEmbed from "vue-pdf-embed";
-import type { Item } from "~~/shared/types";
+import type { DocumentEntry } from "~~/shared/types";
 
-const { item } = defineProps<{ item: Item }>();
+const { item } = defineProps<{ item: DocumentEntry }>();
 
 const scale = ref(50);
 function resize(amount: number) {
   scale.value += amount;
   console.log(scale.value);
 }
+
+prerenderRoutes(`/api/documents/typst/${item.id}.pdf`);
 </script>
 
 <template>

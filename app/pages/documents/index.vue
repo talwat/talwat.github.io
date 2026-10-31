@@ -7,14 +7,15 @@ useSeoMeta({
 });
 
 import Entry from "~/components/documents/Entry.vue";
-import type { Item } from "~~/shared/types";
+import type { DocumentEntry } from "~~/shared/types";
 
-const list = (await useFetch<Item[]>("/api/documents")).data.value ?? [];
+const list =
+  (await useFetch<DocumentEntry[]>("/api/documents")).data.value ?? [];
 
 interface Category {
   name: string;
   description: string;
-  items: Item[];
+  items: DocumentEntry[];
 }
 
 const categories: Category[] = [
