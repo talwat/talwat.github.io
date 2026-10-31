@@ -1,8 +1,3 @@
-* {
-  transition: background-color linear 0.2s;
-  transition: color linear 0.2s;
-}
-
 :root,
 :root.dark {
   --fg: #cad3f5;
