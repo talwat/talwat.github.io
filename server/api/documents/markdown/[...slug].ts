@@ -5,6 +5,7 @@ import { exists, getID } from "~~/server/media/utils";
 
 import rangi from "@comark/vue/plugins/rangi";
 import math from "~~/server/plugins/comarkMath";
+import toc from "comark/plugins/toc";
 import { catppuccin } from "rangi/themes";
 
 const sourceDir = path.resolve(process.cwd(), "documents/markdown/");
@@ -22,7 +23,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const document = await parseMarkdown(content, {
-    plugins: [rangi({ theme: catppuccin, lineNumbers: true }), math()],
+    plugins: [rangi({ theme: catppuccin, lineNumbers: true }), math(), toc()],
   });
 
   return document;
