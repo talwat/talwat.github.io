@@ -6,12 +6,34 @@ import { promises as fs } from "fs";
 import { DocumentType, DocumentEntry, DocumentMeta } from "~~/shared/types";
 import { parseMarkdown } from "comark";
 
+const documentsDir = path.resolve(process.cwd(), "documents");
+const DOCUMENT_TYPES: DocumentType[] = ["markdown", "typst"];
+
+const isDocumentType = (value?: string): value is DocumentType =>
+  value === "markdown" || value === "typst";
+
+const entryPath = (type: DocumentType, id: string) =>
+  path.resolve(documentsDir, type, type === "markdown" ? `${id}.md` : id);
+
+const entryExists = async (type: DocumentType, id: string) =>
+  type === "typst"
+    ? await exists(path.join(entryPath(type, id), "main.typ"), false)
+    : await exists(entryPath(type, id), false);
+
+async function resolveType(id: string): Promise<DocumentType> {
+  for (const type of DOCUMENT_TYPES) {
+    if (await entryExists(type, id)) return type;
+  }
+
+  throw new Error(`Document not found: ${id}`);
+}
+
 // Input is a file for markdown and a directory for typst.
 async function getMeta(
   input: string,
-  type: DocumentType,
+  type?: DocumentType,
 ): Promise<DocumentMeta> {
-  if (type == "markdown") {
+  if (type === "markdown") {
     const document = await parseMarkdown((await fs.readFile(input)).toString());
     return document.frontmatter;
   }
@@ -25,35 +47,41 @@ async function getMeta(
   }
 }
 
-const documentsDir = path.resolve(process.cwd(), "documents");
+export async function get(
+  id: string,
+  type?: DocumentType,
+): Promise<DocumentEntry> {
+  const resolved = type ?? (await resolveType(id));
 
-const isDocumentType = (value?: string): value is DocumentType =>
-  value === "markdown" || value === "typst";
-
-const isValidEntry = async (type: DocumentType, entry: Dirent<string>) =>
-  type === "typst"
-    ? entry.isDirectory() &&
-      (await exists(path.join(entry.parentPath, entry.name, "main.typ"), false))
-    : entry.isFile() && path.extname(entry.name) === ".md";
-
-export async function list() {
-  const list: DocumentEntry[] = [];
-
-  const entries = await contents("documents", true);
-  for (const entry of entries) {
-    const full = path.join(entry.parentPath, entry.name);
-    const [type, ...rest] = path.relative(documentsDir, full).split(path.sep);
-
-    if (!rest.length || !isDocumentType(type)) continue;
-    if (!(await isValidEntry(type, entry))) continue;
-
-    const { dir, name } = path.parse(path.join(...rest));
-    list.push({
-      id: path.join(dir, name),
-      meta: await getMeta(full, type),
-      type,
-    });
+  if (type && !(await entryExists(type, id))) {
+    throw new Error(`Document not found: ${type}/${id}`);
   }
 
-  return list;
+  return {
+    id,
+    type: resolved,
+    meta: await getMeta(entryPath(resolved, id), resolved),
+  };
+}
+
+export async function list(): Promise<DocumentEntry[]> {
+  const entries = await contents("documents", true);
+
+  const refs = await Promise.all(
+    entries.map(async (entry) => {
+      const full = path.join(entry.parentPath, entry.name);
+      const [type, ...rest] = path.relative(documentsDir, full).split(path.sep);
+      const { dir, name } = path.parse(path.join(...rest));
+      const id = path.join(dir, name);
+
+      if (!rest.length || !isDocumentType(type)) return null;
+      if (!(await entryExists(type, id))) return null;
+
+      return { type, id };
+    }),
+  );
+
+  return Promise.all(
+    refs.filter((ref) => ref !== null).map(({ type, id }) => get(id, type)),
+  );
 }

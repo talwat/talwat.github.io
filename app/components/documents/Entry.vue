@@ -1,11 +1,16 @@
 <script lang="ts" setup>
 import type { DocumentEntry } from "~~/shared/types";
 
-const { item } = defineProps<{ item: DocumentEntry }>();
+const { document } = defineProps<{ document: DocumentEntry }>();
 </script>
 <template>
   <div>
-    <NuxtLink :to="`/documents/${item.id}/`">{{ item.meta.title }}</NuxtLink>
-    <span v-if="item.meta.description"> / {{ item.meta.description }}</span>
+    <NuxtLink
+      :to="`/${!document.id.includes('/') || document.id.startsWith('test/') ? 'documents/' : ''}${document.id}/`"
+      >{{ document.meta.title }}</NuxtLink
+    >
+    <span v-if="document.meta.description">
+      / {{ document.meta.description }}</span
+    >
   </div>
 </template>

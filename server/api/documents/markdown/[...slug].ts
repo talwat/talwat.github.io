@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { exists, getID } from "~~/server/media/utils";
 
+import footnotes from "@comark/vue/plugins/footnotes";
 import rangi from "@comark/vue/plugins/rangi";
 import math from "~~/server/plugins/comarkMath";
 import toc from "comark/plugins/toc";
@@ -23,7 +24,12 @@ export default defineEventHandler(async (event) => {
   }
 
   const document = await parseMarkdown(content, {
-    plugins: [rangi({ theme: catppuccin, lineNumbers: true }), math(), toc()],
+    plugins: [
+      rangi({ theme: catppuccin, lineNumbers: true }),
+      math(),
+      toc(),
+      footnotes(),
+    ],
   });
 
   return document;

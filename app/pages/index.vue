@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import IsoCylinder from "~/components/graphics/IsoCylinder.vue";
 import NoScript from "~/components/NoScript.vue";
+
+definePageMeta({
+  alias: "/home",
+});
 </script>
 
 <template>

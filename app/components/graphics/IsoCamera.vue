@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { usePerformance } from "./usePerformance";
+import { usePerformance } from "../../composables/usePerformance";
 
 const animated = usePerformance();
 const props = defineProps({

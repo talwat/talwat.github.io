@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const error = useError().value!;
-console.log(error);
 
 useSeoMeta({
   title: `${error.status} Error`,

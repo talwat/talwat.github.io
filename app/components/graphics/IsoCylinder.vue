@@ -36,7 +36,7 @@
 
 <script setup>
 import { computed, ref, watch, onBeforeUnmount } from "vue";
-import { usePerformance } from "./usePerformance";
+import { usePerformance } from "../../composables/usePerformance";
 
 const props = defineProps({
   // Geometry (px, before scaling)

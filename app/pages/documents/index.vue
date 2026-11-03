@@ -56,7 +56,7 @@ const categories: Category[] = [
         <h2>{{ category.name }}</h2>
         <p class="description">{{ category.description }}</p>
         <ul>
-          <li v-for="item in category.items"><Entry :item /></li>
+          <li v-for="document in category.items"><Entry :document /></li>
         </ul>
       </div>
     </div>

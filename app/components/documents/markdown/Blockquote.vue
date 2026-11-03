@@ -1,13 +1,15 @@
 <template>
-  <blockquote :class="`quote-${as}`">
-    <Icon class="quote-icon" :name="icons[as]" />
-    <slot />
+  <blockquote :class="`quote-${as ?? 'plain'}`">
+    <Icon v-if="as" class="quote-icon" :name="icons[as]" size="1.5rem" />
+    <div>
+      <slot />
+    </div>
   </blockquote>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  as: "note" | "tip" | "important" | "warning" | "caution" | "danger";
+  as?: "note" | "tip" | "important" | "warning" | "caution" | "danger";
 }>();
 
 const icons = {
@@ -28,14 +30,20 @@ blockquote {
   border-left: 3px solid var(--quote-color);
   background: color-mix(in srgb, var(--quote-color) 10%, var(--bg));
   color: var(--fg);
+
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.quote-plain {
+  background: none;
 }
 
 .quote-icon {
   display: inline-block;
-  font-size: 1.5rem;
   color: var(--quote-color);
-  vertical-align: central;
-  margin-right: 0.5rem;
+  flex: 0 0 1.5rem;
 }
 
 .quote-note {

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { DocumentEntry } from "~~/shared/types";
 
-const { item } = defineProps<{ item: DocumentEntry }>();
-prerenderRoutes(`/api/documents/typst/${item.id}.svg`);
+const { document: document } = defineProps<{ document: DocumentEntry }>();
+prerenderRoutes(`/api/documents/typst/${document.id}.svg`);
 </script>
 
 <template>
-  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <h1 class="title" v-if="document.meta.title">{{ document.meta.title }}</h1>
   <div id="container">
-    <img id="page" :src="`/api/documents/typst/${item.id}.svg`" />
+    <img id="page" :src="`/api/documents/typst/${document.id}.svg`" />
   </div>
 </template>
 

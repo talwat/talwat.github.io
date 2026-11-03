@@ -7,33 +7,26 @@ import type { MarkdownDocument as Parsed } from "comark";
 import type { DocumentEntry } from "~~/shared/types";
 import MathEmbed from "./markdown/MathEmbed.vue";
 import Blockquote from "./markdown/Blockquote.vue";
+import Outline from "./markdown/Outline.vue";
 
-const { item } = defineProps<{ item: DocumentEntry }>();
+const { document } = defineProps<{ document: DocumentEntry }>();
 const { data, error } = await useFetch<Parsed>(
-  `/api/documents/markdown/${item.id}`,
+  `/api/documents/markdown/${document.id}`,
 );
 
 if (error.value) throw error.value;
-console.log(data.value?.meta?.toc);
 </script>
 
 <template>
-  <!-- <aside>
-      <h2>{{ data?.meta?.toc.title || 'On This Page' }}</h2>
-      <nav>
-        <ul>
-          <li v-for="link in data?.meta.toc.links" :key="link.id">
-            <NuxtLink :href="`#${link.id}`">{{ link.text }}</NuxtLink>
-            <ul v-if="link.children">
-              <li v-for="child in link.children" :key="child.id">
-                <h1>{{ child }}</h1>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </aside> -->
-  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <h1 class="title" v-if="document.meta.title">{{ document.meta.title }}</h1>
+  <aside v-if="!document.meta.serif">
+    <h2 id="outline-title">
+      {{ data?.meta?.toc?.title || "Table of Contents" }}
+    </h2>
+    <nav>
+      <Outline :links="data?.meta?.toc?.links" />
+    </nav>
+  </aside>
   <MarkdownDocument
     :components="{ 'typst-math': MathEmbed, blockquote: Blockquote }"
     :value="data"

@@ -2,19 +2,18 @@
 import VuePdfEmbed from "vue-pdf-embed";
 import type { DocumentEntry } from "~~/shared/types";
 
-const { item } = defineProps<{ item: DocumentEntry }>();
+const { document } = defineProps<{ document: DocumentEntry }>();
 
 const scale = ref(50);
 function resize(amount: number) {
   scale.value += amount;
-  console.log(scale.value);
 }
 
-prerenderRoutes(`/api/documents/typst/${item.id}.pdf`);
+prerenderRoutes(`/api/documents/typst/${document.id}.pdf`);
 </script>
 
 <template>
-  <h1 class="title" v-if="item.meta.title">{{ item.meta.title }}</h1>
+  <h1 class="title" v-if="document.meta.title">{{ document.meta.title }}</h1>
   <div id="container">
     <div id="toolbar">
       <button @click="resize(-10)" :disabled="scale <= 30">
@@ -27,7 +26,7 @@ prerenderRoutes(`/api/documents/typst/${item.id}.pdf`);
     </div>
     <ClientOnly>
       <VuePdfEmbed
-        :source="`/api/documents/typst/${item.id}.pdf`"
+        :source="`/api/documents/typst/${document.id}.pdf`"
         :width="1920"
       />
     </ClientOnly>

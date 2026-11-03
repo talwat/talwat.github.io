@@ -6,6 +6,14 @@ code {
   padding-bottom: 0.1rem;
 }
 
+kbd {
+  font-size: 1rem;
+  border: 1px dashed var(--bg-3);
+  padding: 0.2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
 pre > code {
   padding: 0;
   background: none;
@@ -16,6 +24,8 @@ pre {
   padding: 1rem;
   padding-left: 0.5rem;
   padding-right: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   word-wrap: break-word;
   max-width: min-content;
   width: 100%;
@@ -83,4 +93,70 @@ pre > code > .line::before {
 
 :root:not(.light) .shj span {
   color: var(--shiki-dark, #cad3f5) !important;
+}
+
+li > p {
+  margin: 0;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+#markdown:not(.serif) {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--bg-1);
+  }
+}
+
+hr {
+  color: var(--fg-1);
+}
+
+mark {
+  background-color: var(--accent);
+  color: var(--bg-0);
+}
+
+summary {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#markdown table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  /* border: 1px solid var(--bg-2); */
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+#markdown th,
+#markdown td {
+  padding: 0.5rem 1rem;
+  text-align: left;
+  border: var(--bg-2) 1px solid;
+  border-collapse: collapse;
+}
+
+#markdown thead th {
+  background-color: var(--bg-0);
+  color: var(--fg);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+#markdown tbody tr:nth-child(even) {
+  background-color: var(--bg-1);
+}
+
+#markdown tbody tr:nth-child(odd) {
+  background-color: transparent;
 }

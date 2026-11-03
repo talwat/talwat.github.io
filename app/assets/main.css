@@ -48,6 +48,11 @@
   --black: #181926;
 }
 
+html,
+body {
+  scroll-padding-top: 5rem;
+}
+
 body {
   background-color: var(--bg);
   color: var(--fg);
