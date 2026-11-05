@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxtjs/sitemap",
     "@nuxtjs/color-mode",
+    "@comark/nuxt",
   ],
   fonts: {
     defaults: {
@@ -16,7 +17,7 @@ export default defineNuxtConfig({
     },
   },
   experimental: {
-    payloadExtraction: true,
+    payloadExtraction: "client",
     defaults: {
       nuxtLink: {
         prefetchOn: { visibility: false, interaction: true },

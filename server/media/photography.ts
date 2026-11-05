@@ -26,7 +26,7 @@ interface Collection {
 
 export async function get(id: string): Promise<Collection> {
   const dir = path.resolve("public/images/photography", id);
-  const entries = await fs.readdir(dir, { withFileTypes: true });
+  const entries = await contents(dir, false);
 
   const buf = await fs.readFile(path.resolve(dir, "meta.yaml"));
   const meta = yaml.parse(buf.toString());

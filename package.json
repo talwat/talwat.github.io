@@ -11,6 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@comark/nuxt": "0.8.1",
     "@comark/vue": "^0.8.1",
     "@myriaddreamin/typst-ts-node-compiler": "npm:@wybxc/typst-ts-node-compiler@0.7.1",
     "@nuxt/fonts": "1.2.0",

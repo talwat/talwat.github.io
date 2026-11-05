@@ -34,8 +34,10 @@ async function getMeta(
   type?: DocumentType,
 ): Promise<DocumentMeta> {
   if (type === "markdown") {
-    const document = await parseMarkdown((await fs.readFile(input)).toString());
-    return document.frontmatter;
+    const content = await fs.readFile(input, "utf-8");
+    const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+
+    return match?.[1] ? yaml.parse(match[1]) : {};
   }
 
   try {

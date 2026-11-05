@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmbedTypst from "~/components/documents/EmbedTypst.vue";
-import Markdown from "~/components/documents/Markdown.vue";
-import Typst from "~/components/documents/Typst.vue";
+import MarkdownDocument from "~/components/documents/MarkdownDocument.vue";
+import TypstDocument from "~/components/documents/TypstDocument.vue";
 import type { DocumentEntry } from "~~/shared/types";
 
 const { document } = defineProps<{ document: DocumentEntry }>();
@@ -17,10 +17,10 @@ useSeoMeta({
 <template>
   <main v-if="document.type == 'typst'" id="typst">
     <EmbedTypst v-if="document.meta.embed" :document />
-    <Typst v-else :document />
+    <TypstDocument v-else :document />
   </main>
   <main v-else id="markdown" :class="{ serif: document.meta.serif }">
-    <Markdown :document />
+    <MarkdownDocument :document />
   </main>
 </template>
 
