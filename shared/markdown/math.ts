@@ -27,7 +27,6 @@ function blockRule(state: any, start: number, end: number, silent: boolean) {
   state.line = line + 1;
 
   const token = state.push("typst-math", "typst-math", 0);
-  token.content = content;
   token.map = [start, state.line];
   token.attrs = [
     ["class", "math block"],

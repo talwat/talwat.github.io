@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     payloadExtraction: "client",
+    prerenderErrorPages: true,
     defaults: {
       nuxtLink: {
         prefetchOn: { visibility: false, interaction: true },

@@ -1,6 +1,7 @@
 code {
   font-size: 1rem;
   background-color: var(--code);
+  border: 1px solid var(--bg-1);
   padding: 0.2rem;
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
@@ -17,9 +18,11 @@ kbd {
 pre > code {
   padding: 0;
   background: none;
+  border: none;
 }
 
 pre {
+  border: 1px solid var(--bg-1);
   background-color: var(--code);
   padding: 1rem;
   padding-left: 0.5rem;
@@ -154,7 +157,7 @@ summary {
 }
 
 #markdown tbody tr:nth-child(even) {
-  background-color: var(--bg-1);
+  background-color: color-mix(in srgb, var(--bg-1) 50%, transparent);
 }
 
 #markdown tbody tr:nth-child(odd) {

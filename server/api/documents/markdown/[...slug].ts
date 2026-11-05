@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { exists, getID } from "~~/server/media/utils";
-import { parse } from "~~/shared/markdown";
+import parse from "~~/shared/markdown/parser";
 
 const sourceDir = path.resolve(process.cwd(), "documents/markdown/");
 

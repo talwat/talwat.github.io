@@ -4,16 +4,15 @@ import "~/assets/markdown.css";
 import type { MarkdownDocument as Parsed } from "comark";
 import type { DocumentEntry } from "~~/shared/types";
 import Outline from "./markdown/Outline.vue";
-import { parse } from "~~/shared/markdown.ts";
 
 const { document } = defineProps<{ document: DocumentEntry }>();
-const { data, error } = await useFetch<string>(
-  `/api/documents/markdown/${document.id}.md`,
+const { data, error } = await useFetch<Parsed>(
+  `/api/documents/markdown/${document.id}`,
 );
 
 if (!data.value) throw createError({ status: 500 });
 if (error.value) throw error.value;
-const parsed: Parsed = await parse(data.value);
+const parsed: Parsed = data.value;
 </script>
 
 <template>
