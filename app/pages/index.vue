@@ -124,4 +124,10 @@ main {
     flex-direction: column;
   }
 }
+
+@media (max-width: 1028px) {
+  .graphic {
+    display: none !important;
+  }
+}
 </style>

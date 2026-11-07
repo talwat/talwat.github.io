@@ -83,9 +83,8 @@ const categories: Category[] = [
 </script>
 
 <template>
-  <div id="container">
-    <section id="about">
-      <h2>About</h2>
+  <DynamicSplit separator wrap>
+    <template #left>
       <p>
         I've been doing programming for around 4 years now. I love computers,
         and more specifically, computer engineering. I am fascinated by the
@@ -95,10 +94,9 @@ const categories: Category[] = [
         <a href="https://rust-lang.org/">Rust</a> and
         <a href="https://tokio.rs/">tokio</a>.
       </p>
-    </section>
-    <div class="separator" />
-    <section id="technologies">
-      <h2>Technologies I Use</h2>
+    </template>
+    <template #right>
+      <h2 id="technology-header">Technologies I Use</h2>
       <div class="technology-category" v-for="category in categories">
         <div class="technology-name">
           <Icon
@@ -125,14 +123,14 @@ const categories: Category[] = [
           </li>
         </ul>
       </div>
-    </section>
-  </div>
+    </template>
+  </DynamicSplit>
 </template>
 
 <style lang="css" scoped>
-h2 {
+#technology-header {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 p {
@@ -140,16 +138,11 @@ p {
   font-size: 1.2rem;
 }
 
-#technologies {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .technology-category {
   display: grid;
   border-bottom: solid var(--bg-2) 1px;
   padding-bottom: 0.5rem;
+  margin-top: 0.5rem;
   padding-top: 0.05rem;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   row-gap: 0.4rem;
@@ -180,47 +173,5 @@ li,
 li > a {
   display: contents;
   width: 32px;
-}
-
-#container > section {
-  flex: 1 1 248px;
-  padding: 1rem;
-}
-
-#container {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: nowrap;
-}
-
-.separator {
-  flex: 0 0 1px;
-  align-self: stretch;
-  background: var(--bg-1);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  #container {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  #container > section {
-    flex: unset;
-    padding: 1rem;
-  }
-
-  /* Becomes a horizontal rule */
-  .separator {
-    flex: 0 0 1px;
-    align-self: stretch;
-    width: auto;
-    height: 1px;
-    margin: 0;
-    margin-right: 1rem;
-    margin-left: 1rem;
-  }
 }
 </style>

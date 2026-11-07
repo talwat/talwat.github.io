@@ -152,9 +152,3 @@ img:not([src]) {
   align-items: center;
   justify-content: center;
 }
-
-@media (max-width: 1028px) {
-  .graphic {
-    display: none !important;
-  }
-}

@@ -7,6 +7,7 @@ import "@splidejs/vue-splide/css";
 
 // @ts-ignore
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import AboutSplit from "~/components/DynamicSplit.vue";
 
 const collections = (await useFetch("/api/photography")).data.value!;
 
@@ -21,9 +22,8 @@ useSeoMeta({
 <template>
   <main id="photography">
     <h1 class="title">Photography</h1>
-    <div id="top">
-      <section id="about">
-        <h2 id="about-title">About</h2>
+    <AboutSplit separator>
+      <template #left>
         <p id="about-text">
           Here is a collection of photos I've taken with either a Nikon D5500,
           or a Fujifilm X-T3. I'm certainly a beginner, but I try my best. I
@@ -34,11 +34,13 @@ useSeoMeta({
         <NoScript>
           <p>No JS? Click to see each collection.</p>
         </NoScript>
-      </section>
-      <section class="graphic">
-        <IsoCamera id="camera" :scale="0.8" :start-angle="45" />
-      </section>
-    </div>
+      </template>
+      <template #right>
+        <div class="graphic">
+          <IsoCamera id="camera" :scale="0.8" :start-angle="45" />
+        </div>
+      </template>
+    </AboutSplit>
     <div id="collections">
       <section class="collection" v-for="collection in collections">
         <h2>
@@ -96,24 +98,12 @@ useSeoMeta({
 </template>
 
 <style scoped>
+.graphic {
+  height: 100%;
+}
+
 #camera {
   margin-top: calc(-2.25rem + 0.5rem);
-}
-
-#top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#top > * {
-  padding: 1rem;
-  flex: 1 1;
-}
-
-#about-title {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
 }
 
 #about-text {
@@ -168,7 +158,7 @@ a {
   gap: 1rem 1rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 912px) {
   #collections {
     grid-template-columns: 1fr;
   }
@@ -181,11 +171,6 @@ a {
   .collection {
     padding-top: 1rem;
     border-top: 1px solid var(--bg-1);
-  }
-
-  #top {
-    margin-left: 0;
-    margin-right: 0;
   }
 }
 </style>
