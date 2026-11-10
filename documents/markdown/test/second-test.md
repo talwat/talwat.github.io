@@ -452,7 +452,7 @@ If you made it this far, everything rendered. Here's one last combo of everythin
 
 [^intro]: This is the first footnote, referenced from the opening paragraph.
 
-[^second]: A short footnote, with _formatting_ and `code`.
+[^second]: A short footnote, with formatting and code.
 
 [^long]: A longer footnote.
 

@@ -163,3 +163,12 @@ summary {
 #markdown tbody tr:nth-child(odd) {
   background-color: transparent;
 }
+
+.footnote-ref {
+  vertical-align: super;
+  line-height: 0;
+}
+
+.footnote-backref {
+  display: none;
+}
