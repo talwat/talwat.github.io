@@ -65,7 +65,7 @@ const categories: Category[] = [
 
 <style lang="css" scoped>
 main {
-  width: 60rem;
+  width: 48rem;
 }
 
 .description {

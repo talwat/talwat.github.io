@@ -15,35 +15,69 @@ useSeoMeta({
 </script>
 
 <template>
-  <main v-if="document.type == 'typst'" id="typst">
-    <EmbedTypst v-if="document.meta.embed" :document />
-    <TypstDocument v-else :document />
-  </main>
-  <main v-else id="markdown" :class="{ serif: document.meta.serif }">
-    <MarkdownDocument :document />
-  </main>
+  <div id="document">
+    <aside id="left-aside">
+      <NuxtLink to="/documents" id="back-link">
+        <Icon name="mdi:arrow-back-circle" size="2rem" title="Back" />
+      </NuxtLink>
+    </aside>
+    <main v-if="document.type == 'typst'" id="typst">
+      <EmbedTypst v-if="document.meta.embed" :document />
+      <TypstDocument v-else :document />
+    </main>
+    <main v-else id="markdown" :class="{ serif: document.meta.serif }">
+      <MarkdownDocument :document />
+    </main>
+  </div>
 </template>
 
 <style lang="css" scoped>
+#back-link {
+  position: sticky;
+  top: 4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+}
+
+#document {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 45rem) 6.5rem;
+  padding: 1.5rem 0rem;
+  flex: 1;
+}
+
+#document:has(#typst) {
+  grid-template-columns: 6.5rem minmax(0, 52rem) 6.5rem;
+}
+
+main {
+  padding: 0;
+}
+
+#back-link {
+  color: var(--fg);
+}
+
 #typst {
   width: 100%;
 }
 
-#markdown {
-  width: 60rem;
-  box-sizing: border-box;
-}
+@media (max-width: 800px) {
+  #left-aside {
+    display: none;
+  }
 
-@media (min-width: 800px) {
-  #markdown {
-    padding-left: 8rem;
-    padding-right: 8rem;
+  #document {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 1.5rem;
   }
 }
 
 #markdown.serif {
-  width: 48rem;
   line-height: 1.5;
-  padding: 1.5rem;
 }
 </style>

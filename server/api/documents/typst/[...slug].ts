@@ -11,7 +11,11 @@ interface Document {
   content: Buffer | string;
 }
 
-async function compile(workspace: string, embed: boolean): Promise<Document> {
+async function compile(
+  workspace: string,
+  embed: boolean,
+  fg?: string,
+): Promise<Document> {
   const compiler = NodeCompiler.create({
     workspace,
   });
@@ -20,6 +24,11 @@ async function compile(workspace: string, embed: boolean): Promise<Document> {
     path.resolve(sourceDir, embed ? "embed.typ" : "paged.typ"),
     "utf-8",
   );
+
+  if (fg) {
+    console.log(fg);
+    preamble += `\n#set text(fill: rgb("${fg}"))\n`;
+  }
 
   const source = await fs.readFile(
     path.resolve(workspace, "main.typ"),
@@ -42,9 +51,10 @@ export default defineEventHandler(async (event) => {
   const { id, ext } = getID(event);
 
   const embed = ext == ".svg";
+  const fg = getQuery(event).fg?.toString();
   const workDir = path.resolve(sourceDir, id);
 
-  const { mime, content } = await compile(workDir, embed);
+  const { mime, content } = await compile(workDir, embed, fg);
   setResponseHeader(event, "Content-Type", mime);
 
   return content;

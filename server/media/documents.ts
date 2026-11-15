@@ -83,7 +83,9 @@ export async function list(): Promise<DocumentEntry[]> {
     }),
   );
 
-  return Promise.all(
-    refs.filter((ref) => ref !== null).map(({ type, id }) => get(id, type)),
-  );
+  return (
+    await Promise.all(
+      refs.filter((ref) => ref !== null).map(({ type, id }) => get(id, type)),
+    )
+  ).filter((x) => !x.meta?.hide);
 }
