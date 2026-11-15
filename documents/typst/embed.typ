@@ -1,5 +1,5 @@
-#set text(font: "Fira Code", tracking: -0.03em, size: 14.5pt, weight: 400)
-// #set text(size: 16pt)
+// #set text(font: "Fira Code", tracking: -0.03em, size: 14.5pt, weight: 400)
+#set text(size: 16pt)
 #set page(height: auto, fill: none)
 #set page(margin: (
   bottom: 0.1cm,

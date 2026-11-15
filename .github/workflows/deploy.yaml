@@ -8,26 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Fira Code
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          FONT_DIR="$HOME/.local/share/fonts"
-          mkdir -p "$FONT_DIR"
-
-          curl -fL \
-            https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip \
-            -o /tmp/fira-code.zip
-
-          unzip -o /tmp/fira-code.zip -d /tmp/fira-code
-
-          find /tmp/fira-code -type f \( -iname '*.ttf' -o -iname '*.otf' \) \
-            -exec cp {} "$FONT_DIR/" \;
-
-          fc-cache -f
-
-          fc-list | grep -i "Fira Code"
       - uses: actions/checkout@v7
       - run: corepack enable
       - uses: actions/setup-node@v7
