@@ -1,6 +1,14 @@
 #import "@preview/mannot:0.4.0": markrect, annot, mark
 
 #set heading(numbering: "1.")
+
+#set document(
+  title: [Math IA Notes],
+)
+
+#align(center)[
+  #title()
+]
 #outline()
 
 #pagebreak()

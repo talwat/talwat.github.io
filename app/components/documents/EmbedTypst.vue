@@ -19,7 +19,7 @@ prerenderRoutes([`${parent}~light.svg`, `${parent}~dark.svg`]);
 </script>
 
 <template>
-  <h1 class="title" v-if="document.meta.title">{{ document.meta.title }}</h1>
+  <!-- <h1 class="title" v-if="document.meta.title">{{ document.meta.title }}</h1> -->
   <div id="container">
     <span class="loading">Loading...</span>
     <div id="image-container">
@@ -54,6 +54,7 @@ prerenderRoutes([`${parent}~light.svg`, `${parent}~dark.svg`]);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .page {

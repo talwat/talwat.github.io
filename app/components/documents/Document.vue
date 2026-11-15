@@ -66,10 +66,6 @@ main {
   color: var(--fg);
 }
 
-#typst {
-  width: 100%;
-}
-
 @media (max-width: 800px) {
   #left-aside {
     display: none;
