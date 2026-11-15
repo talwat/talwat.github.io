@@ -8,12 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Download Fira Code
+      - name: Install Fira Code
         shell: bash
         run: |
           set -euo pipefail
 
-          FONT_DIR="/usr/local/share/fonts/fira-code"
+          FONT_DIR="$HOME/.local/share/fonts"
           mkdir -p "$FONT_DIR"
 
           curl -fL \
@@ -25,9 +25,8 @@ jobs:
           find /tmp/fira-code -type f \( -iname '*.ttf' -o -iname '*.otf' \) \
             -exec cp {} "$FONT_DIR/" \;
 
-          fc-cache -f -v
+          fc-cache -f
 
-          echo "Installed fonts:"
           fc-list | grep -i "Fira Code"
       - uses: actions/checkout@v7
       - run: corepack enable
