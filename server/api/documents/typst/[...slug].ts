@@ -14,7 +14,7 @@ interface Document {
 async function compile(
   workspace: string,
   embed: boolean,
-  fg?: string,
+  extra?: string,
 ): Promise<Document> {
   const compiler = NodeCompiler.create({
     workspace,
@@ -25,10 +25,17 @@ async function compile(
     "utf-8",
   );
 
-  if (fg) {
-    console.log(fg);
-    preamble += `\n#set text(fill: rgb("${fg}"))\n`;
-  }
+  const fg = {
+    light: `rgb("#4c4f69")`,
+    dark: `rgb("#cad3f5")`,
+  };
+
+  const color = extra?.includes("dark")
+    ? fg.dark
+    : extra?.includes("light")
+      ? fg.light
+      : "black";
+  if (color) preamble = `\n#let fg = ${color}\n` + preamble;
 
   const source = await fs.readFile(
     path.resolve(workspace, "main.typ"),
@@ -48,13 +55,12 @@ async function compile(
 }
 
 export default defineEventHandler(async (event) => {
-  const { id, ext } = getID(event);
+  const { id, ext, extra } = getID(event);
 
   const embed = ext == ".svg";
-  const fg = getQuery(event).fg?.toString();
   const workDir = path.resolve(sourceDir, id);
 
-  const { mime, content } = await compile(workDir, embed, fg);
+  const { mime, content } = await compile(workDir, embed, extra);
   setResponseHeader(event, "Content-Type", mime);
 
   return content;

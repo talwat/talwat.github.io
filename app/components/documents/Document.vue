@@ -50,10 +50,6 @@ useSeoMeta({
   flex: 1;
 }
 
-#document:has(#typst) {
-  grid-template-columns: 6.5rem minmax(0, 52rem) 6.5rem;
-}
-
 main {
   padding: 0;
 }

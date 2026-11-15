@@ -4,23 +4,18 @@ import type { DocumentEntry } from "~~/shared/types";
 const { document: document } = defineProps<{ document: DocumentEntry }>();
 const theme = useColorMode();
 
-const fg = {
-  light: "4c4f69",
-  dark: "cad3f5",
-};
-
-const image = `/api/documents/typst/${document.id}.svg`;
+const parent = `/api/documents/typst/${document.id}`;
 
 const loading = ref(true);
 const src = computed(
-  () => `${image}?fg=${theme.value === "light" ? fg.light : fg.dark}`,
+  () => `${parent}~${theme.value === "light" ? "light" : "dark"}.svg`,
 );
 
 watch(src, () => {
   loading.value = true;
 });
 
-prerenderRoutes([`${image}?fg=${fg.dark}`, `${image}?fg=${fg.light}`]);
+prerenderRoutes([`${parent}~light.svg`, `${parent}~dark.svg`]);
 </script>
 
 <template>
@@ -31,7 +26,7 @@ prerenderRoutes([`${image}?fg=${fg.dark}`, `${image}?fg=${fg.light}`]);
       <ClientOnly>
         <img
           v-show="!loading"
-          class="dynamic page"
+          class="page"
           :src
           @load="loading = false"
           @error="loading = false"
@@ -39,7 +34,7 @@ prerenderRoutes([`${image}?fg=${fg.dark}`, `${image}?fg=${fg.light}`]);
         />
       </ClientOnly>
       <noscript>
-        <img class="fallback page" :src="image" loading="lazy" />
+        <img class="page" :src loading="eager" />
       </noscript>
     </div>
   </div>
@@ -55,13 +50,10 @@ prerenderRoutes([`${image}?fg=${fg.dark}`, `${image}?fg=${fg.light}`]);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 .page {
   width: 100%;
-  max-width: 60em;
   height: auto;
 }
 
@@ -69,9 +61,5 @@ prerenderRoutes([`${image}?fg=${fg.dark}`, `${image}?fg=${fg.light}`]);
   z-index: 3;
   width: 100%;
   background-color: var(--bg);
-}
-
-:root:not(.light) .fallback {
-  filter: invert(1);
 }
 </style>

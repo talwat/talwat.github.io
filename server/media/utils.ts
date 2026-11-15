@@ -18,7 +18,13 @@ export function getID(event: H3Event<globalThis.EventHandlerRequest>) {
   if (!slug) throw createError({ status: 400 });
 
   const parsed = path.parse(slug);
-  return { id: path.join(parsed.dir, parsed.name), ext: parsed.ext };
+  const [name, extra] = parsed.name.split("~");
+
+  return {
+    id: path.join(parsed.dir, name!),
+    ext: parsed.ext,
+    extra,
+  };
 }
 
 export async function contents(scan: string, recursive: boolean) {

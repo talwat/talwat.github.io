@@ -1,5 +1,5 @@
 <template>
-  <noscript>
+  <noscript data-allow-mismatch>
     <div
       data-nosnippet
       :style="{
