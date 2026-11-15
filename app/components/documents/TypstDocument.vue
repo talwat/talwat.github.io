@@ -4,7 +4,7 @@ import type { DocumentEntry } from "~~/shared/types";
 
 const { document } = defineProps<{ document: DocumentEntry }>();
 
-const scale = ref(50);
+const scale = ref(70);
 function resize(amount: number) {
   scale.value += amount;
 }
@@ -34,6 +34,10 @@ prerenderRoutes(`/api/documents/typst/${document.id}.pdf`);
 </template>
 
 <style lang="css" scoped>
+.title {
+  margin-bottom: 0rem;
+}
+
 #toolbar {
   position: sticky;
   top: 4.5rem;
@@ -42,6 +46,7 @@ prerenderRoutes(`/api/documents/typst/${document.id}.pdf`);
   align-items: center;
   gap: 0.75rem;
   padding: 0.5rem;
+  margin: 0.5rem 0;
   background: var(--bg);
   border: 1px solid var(--bg-1);
   color: var(--fg);
@@ -69,7 +74,6 @@ prerenderRoutes(`/api/documents/typst/${document.id}.pdf`);
 }
 
 :global(.vue-pdf-embed) {
-  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

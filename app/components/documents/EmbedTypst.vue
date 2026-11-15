@@ -41,6 +41,10 @@ prerenderRoutes([`${parent}~light.svg`, `${parent}~dark.svg`]);
 </template>
 
 <style lang="css" scoped>
+.title {
+  margin-bottom: 1.5rem;
+}
+
 .loading {
   position: absolute;
   margin-top: 2rem;

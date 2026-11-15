@@ -15,7 +15,10 @@ useSeoMeta({
 </script>
 
 <template>
-  <div id="document">
+  <div
+    id="document"
+    :class="{ full: document.type == 'typst' && !document.meta.embed }"
+  >
     <aside id="left-aside">
       <NuxtLink to="/documents" id="back-link">
         <Icon name="mdi:arrow-back-circle" size="2rem" title="Back" />
@@ -48,6 +51,11 @@ useSeoMeta({
   grid-template-columns: 6.5rem minmax(0, 45rem) 6.5rem;
   padding: 1.5rem 0rem;
   flex: 1;
+}
+
+.full {
+  width: 100%;
+  grid-template-columns: 6.5rem minmax(0, 1fr) 6.5rem !important;
 }
 
 main {
