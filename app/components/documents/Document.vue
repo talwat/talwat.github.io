@@ -53,6 +53,10 @@ useSeoMeta({
   flex: 1;
 }
 
+#document:has(#markdown.serif) {
+  grid-template-columns: 6.5rem minmax(0, 40rem) 6.5rem;
+}
+
 .full {
   width: 100%;
   grid-template-columns: 6.5rem minmax(0, 1fr) 6.5rem !important;
