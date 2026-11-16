@@ -20,11 +20,6 @@ interface Category {
 
 const categories: Category[] = [
   {
-    name: "Math & Physics",
-    description: "Some notes from Math or Physics, written in Typst.",
-    items: list.filter((x) => x.type == "typst"),
-  },
-  {
     name: "Articles",
     description:
       "Longer articles I wrote, some as part of my school newspaper.",

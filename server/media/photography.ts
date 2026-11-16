@@ -5,9 +5,9 @@ import { contents } from "./utils";
 
 const ORDER = [
   "barcelona",
-  "tel-aviv",
-  "mitzpe-ramon",
   "puig-de-dorria",
+  "mitzpe-ramon",
+  "tel-aviv",
   "andorra",
   "freiburg",
   "cadi",
