@@ -1,9 +1,10 @@
 <template>
   <blockquote :class="`quote-${as ?? 'plain'}`">
-    <Icon v-if="as" class="quote-icon" :name="icons[as]" size="1.5rem" />
-    <div>
-      <slot />
+    <div v-if="as" class="flavor">
+      <Icon class="flavor-icon" :name="icons[as]" size="1.25rem" />
+      <span class="flavor-text">{{ as[0]?.toUpperCase() + as.slice(1) }}</span>
     </div>
+    <slot />
   </blockquote>
 </template>
 
@@ -30,20 +31,29 @@ blockquote {
   border-left: 3px solid var(--quote-color);
   background: color-mix(in srgb, var(--quote-color) 10%, var(--bg));
   color: var(--fg);
+  overflow: hidden;
+}
 
+.flavor {
   display: flex;
-  gap: 0.75rem;
   align-items: center;
+  color: var(--quote-color);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.flavor-text {
+  line-height: 1;
+  margin-top: 0.5px;
+}
+
+.content {
+  overflow: hidden;
 }
 
 .quote-plain {
   background: none;
-}
-
-.quote-icon {
-  display: inline-block;
-  color: var(--quote-color);
-  flex: 0 0 1.5rem;
 }
 
 .quote-note {
