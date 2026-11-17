@@ -60,7 +60,8 @@ body:has(#markdown.serif) {
     border-bottom: 1px solid var(--bg-1);
   }
 
-  header .iconify {
+  header #right #primary-social-link,
+  header #left #theme-switcher {
     display: none;
   }
 }

@@ -7,7 +7,7 @@ function change() {
 </script>
 
 <template>
-  <button @click="change">
+  <button id="theme-switcher" @click="change">
     <Icon
       class="theme-icon loading-theme-icon"
       name="mdi:radiobox-indeterminate-variant"

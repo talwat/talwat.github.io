@@ -45,6 +45,7 @@ onMounted(() => {
       </button>
       <div id="right">
         <a
+          id="primary-social-link"
           class="icon"
           v-for="social in socials"
           :href="social.link"
